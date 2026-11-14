@@ -494,3 +494,16 @@ body::before {
   background: var(--gold);
   color: #050b1a;
 }
+body::before,
+.ambient-bg {
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+.screen.active,
+.royal-card,
+.keypad,
+.keypad button {
+  position: relative !important;
+  z-index: 10 !important;
+}
