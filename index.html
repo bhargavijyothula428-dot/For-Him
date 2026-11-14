@@ -459,6 +459,118 @@
       document.getElementById(id).style.display = "none";
     }
 
-    const quizData = [
+   const quizData = [
       {
-        q: "1. What is the #1 thing about you that makes m
+        q: "1. What is the #1 thing about you that makes me fall for you all over again?",
+        options: [
+          "Your smile and the way you look at me",
+          "How calm and strong you stay in every situation",
+          "The way you care for me in little ways without even showing off"
+        ],
+        reaction: "Honestly, it's all of these—you don't even realize how special you are to me! 💙"
+      },
+      {
+        q: "2. What happens the second you sit in the driver's seat or get on your bike?",
+        options: [
+          "Full hero mode ON 🏍️🏎️",
+          "Instant peace and focus on the road",
+          "Checking if I'm comfortable first before starting"
+        ],
+        reaction: "Best driver/rider ever—and I feel safest whenever I'm riding with you! 👑"
+      },
+      {
+        q: "3. Which version of you is my absolute favorite?",
+        options: [
+          "Serious & focused on your goals",
+          "Playful, teasing me, and cracking jokes",
+          "Soft & caring when it's just the two of us"
+        ],
+        reaction: "Every side of you is my favorite, especially when you're just being yourself with me. ❤️"
+      },
+      {
+        q: "4. Who gets possessive or moody faster, and who ends up smiling first?",
+        options: [
+          "I get mad, and I also come back first 😒💓",
+          "You always make me laugh even when I try to stay serious",
+          "Both of us can't stay mad for long!"
+        ],
+        reaction: "Enta koppadinaa malli ni daggarake occhesta... kani nannu ekkuva sataayinchaku modddu! 😁❤️"
+      },
+      {
+        q: "5. What is your #1 responsibility as my boyfriend?",
+        options: [
+          "Pampering me when I'm overthinking",
+          "Giving me unlimited rides and food treats",
+          "Keeping me happy and spoiling me with your time & attention 👑"
+        ],
+        reaction: "All three are locked in! No excuses, no escapes—you're stuck with me forever! 😚💙"
+      },
+      {
+        q: "6. Who fell harder and loves the other person more?",
+        options: [
+          "You",
+          "Me (Bhargavi)",
+          "Equal competition every single day!"
+        ],
+        reaction: "🎉 No debate—I LOVE U without any reason, and today is all about celebrating you! Happy Birthday! 😚🎂"
+      }
+    ];
+
+    let currentQ = 0;
+
+    function openQuizModal() {
+      currentQ = 0;
+      renderQuestion();
+      openModal("modal-quiz");
+    }
+
+    function renderQuestion() {
+      const item = quizData[currentQ];
+      document.getElementById("quizProgress").textContent = `QUESTION ${currentQ + 1} OF ${quizData.length}`;
+      document.getElementById("quizQuestion").textContent = item.q;
+
+      const optionsDiv = document.getElementById("quizOptions");
+      optionsDiv.innerHTML = "";
+      item.options.forEach((opt) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "quiz-option-btn";
+        btn.textContent = opt;
+        btn.onclick = () => selectAnswer(item.reaction);
+        optionsDiv.appendChild(btn);
+      });
+
+      document.getElementById("quizReactionWrap").style.display = "none";
+      document.getElementById("quizNextBtn").style.display = "none";
+    }
+
+    function selectAnswer(reactionText) {
+      document.getElementById("quizReaction").textContent = reactionText;
+      document.getElementById("quizReactionWrap").style.display = "block";
+
+      const nextBtn = document.getElementById("quizNextBtn");
+      nextBtn.textContent = currentQ < quizData.length - 1 ? "Next Question →" : "Play Again ↻";
+      nextBtn.style.display = "inline-block";
+    }
+
+    function nextQuestion() {
+      currentQ = currentQ < quizData.length - 1 ? currentQ + 1 : 0;
+      renderQuestion();
+    }
+
+    function launchRoyalParticles() {
+      const container = document.getElementById("ambientBg");
+      const icons = ["✨", "💎", "👑", "🏎️", "🏍️", "💙"];
+      setInterval(() => {
+        const el = document.createElement("div");
+        el.className = "floating-particle";
+        el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.animationDuration = (Math.random() * 4 + 5) + "s";
+        container.appendChild(el);
+        setTimeout(() => el.remove(), 9000);
+      }, 750);
+    }
+  </script>
+</body>
+</html>
