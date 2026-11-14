@@ -3,9 +3,150 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Royal Birthday Edition | For My Favorite Rider & Co-Pilot</title>
+  <title>Happy Birthday, My Love 👑</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+  <style>
+    /* Interactive Quiz Styling */
+    .quiz-box {
+      background: rgba(17, 42, 92, 0.55);
+      border: 1px solid rgba(45, 212, 191, 0.35);
+      border-radius: 18px;
+      padding: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    .quiz-progress {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      color: #2dd4bf;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+    .quiz-question {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      color: #f5df96;
+      margin-bottom: 1.2rem;
+      line-height: 1.5;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .quiz-option-btn {
+      background: rgba(5, 11, 26, 0.75);
+      border: 1px solid rgba(229, 193, 88, 0.35);
+      color: #f1f5f9;
+      padding: 0.9rem 1.1rem;
+      border-radius: 12px;
+      text-align: left;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .quiz-option-btn:hover {
+      border-color: #2dd4bf;
+      background: rgba(20, 184, 166, 0.18);
+      transform: translateX(4px);
+    }
+    .quiz-reaction-wrap {
+      margin-top: 1.1rem;
+      padding: 1rem 1.1rem;
+      border-radius: 14px;
+      background: rgba(20, 184, 166, 0.16);
+      border-left: 3px solid #2dd4bf;
+      color: #e2e8f0;
+      font-size: 0.94rem;
+      line-height: 1.55;
+      display: none;
+    }
+    .quiz-next-btn {
+      margin-top: 1.1rem;
+      background: linear-gradient(135deg, #0d9488, #14b8a6);
+      color: #04101c;
+      font-weight: 700;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 99px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    /* =======================================================
+       PINK & BROWN TEDDY ANIMATION STAGE (HUGGING & TEASING)
+       ======================================================= */
+    .teddy-stage {
+      position: relative;
+      width: 220px;
+      height: 125px;
+      margin: 0 auto 0.9rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: visible;
+    }
+
+    .teddy-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    /* Brown Teddy gentle sway & happy squish when hugged */
+    .brown-teddy {
+      transform-origin: 85px 115px;
+      animation: brownSquish 2.6s ease-in-out infinite;
+    }
+
+    /* Pink Teddy leaping/falling onto Brown Teddy & teasing */
+    .pink-teddy-hug {
+      transform-origin: 135px 115px;
+      animation: pinkFallHug 2.6s ease-in-out infinite;
+    }
+
+    .pink-teddy-tease {
+      transform-origin: 135px 115px;
+      animation: pinkTeaseBounce 1.8s ease-in-out infinite;
+    }
+
+    .teddy-heart {
+      animation: pulseHeart 1.4s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    .teddy-heart-2 {
+      animation: pulseHeart 1.4s ease-in-out 0.5s infinite;
+      transform-origin: center;
+    }
+
+    @keyframes brownSquish {
+      0%, 100% { transform: rotate(0deg) scale(1, 1); }
+      35% { transform: rotate(-3deg) scale(1.02, 0.98); }
+      55% { transform: rotate(-8deg) scale(1.07, 0.92); }
+      75% { transform: rotate(-5deg) scale(1.04, 0.95); }
+    }
+
+    @keyframes pinkFallHug {
+      0% { transform: translate(22px, -16px) rotate(14deg); }
+      30% { transform: translate(6px, -6px) rotate(4deg); }
+      50%, 80% { transform: translate(-14px, 4px) rotate(-14deg); }
+      100% { transform: translate(22px, -16px) rotate(14deg); }
+    }
+
+    @keyframes pinkTeaseBounce {
+      0%, 100% { transform: translate(0px, 0px) rotate(-4deg); }
+      25% { transform: translate(-12px, -14px) rotate(-16deg); }
+      50% { transform: translate(-16px, 2px) rotate(-12deg) scale(1.05, 0.95); }
+      75% { transform: translate(-6px, -8px) rotate(-6deg); }
+    }
+
+    @keyframes pulseHeart {
+      0%, 100% { transform: translateY(0) scale(0.85); opacity: 0.7; }
+      50% { transform: translateY(-9px) scale(1.18); opacity: 1; }
+    }
+  </style>
 </head>
 <body>
 
@@ -42,217 +183,203 @@
         <button class="action-btn unlock-btn" onclick="checkPasscode()">IGNITE</button>
       </div>
 
-      <p class="hint">Hint: Tomorrow's special date (DDMM) 🔑</p>
+      <p class="hint">Hint: Our special 4-digit code 🔑</p>
     </div>
   </section>
 
   <!-- SCREEN 2: THREE ROYAL GIFT VAULTS -->
   <section id="gifts-screen" class="screen">
     <div class="header-banner">
+      <!-- PINK & BROWN TEDDY HUGGING ANIMATION ON UNLOCK -->
+      <div class="teddy-stage" aria-label="Pink and Brown Teddy Hugging">
+        <svg class="teddy-svg" viewBox="0 0 220 125">
+          <!-- Floating Hearts -->
+          <text x="98" y="26" font-size="18" class="teddy-heart">💖</text>
+          <text x="122" y="18" font-size="14" class="teddy-heart-2">💙</text>
+
+          <!-- BROWN TEDDY (Left) -->
+          <g class="brown-teddy">
+            <!-- Ears -->
+            <circle cx="58" cy="42" r="11" fill="#8d5524" stroke="#5c3310" stroke-width="2"/>
+            <circle cx="58" cy="42" r="5.5" fill="#c68642"/>
+            <circle cx="96" cy="42" r="11" fill="#8d5524" stroke="#5c3310" stroke-width="2"/>
+            <circle cx="96" cy="42" r="5.5" fill="#c68642"/>
+            <!-- Body -->
+            <ellipse cx="77" cy="95" rx="24" ry="23" fill="#8d5524" stroke="#5c3310" stroke-width="2"/>
+            <ellipse cx="77" cy="97" rx="14" ry="14" fill="#c68642"/>
+            <!-- Head -->
+            <ellipse cx="77" cy="60" rx="25" ry="21" fill="#8d5524" stroke="#5c3310" stroke-width="2"/>
+            <!-- Muzzle -->
+            <ellipse cx="77" cy="65" rx="10" ry="7.5" fill="#f3d5b5"/>
+            <ellipse cx="77" cy="62.5" rx="3.5" ry="2.2" fill="#3d1e08"/>
+            <!-- Happy Eyes & Smile -->
+            <path d="M66 56 Q69 52 72 56" stroke="#2b1202" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+            <path d="M82 56 Q85 52 88 56" stroke="#2b1202" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+            <path d="M73 67 Q77 71 81 67" stroke="#3d1e08" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- Blush -->
+            <ellipse cx="62" cy="62" rx="4" ry="2.2" fill="#ff8fa3" opacity="0.7"/>
+            <ellipse cx="92" cy="62" rx="4" ry="2.2" fill="#ff8fa3" opacity="0.7"/>
+            <!-- Hugging Arm -->
+            <ellipse cx="98" cy="90" rx="11" ry="6.5" transform="rotate(-15 98 90)" fill="#8d5524" stroke="#5c3310" stroke-width="2"/>
+          </g>
+
+          <!-- PINK TEDDY FALLING ONTO BROWN TEDDY & HUGGING (Right) -->
+          <g class="pink-teddy-hug">
+            <!-- Ears -->
+            <circle cx="122" cy="44" r="10.5" fill="#ff8fab" stroke="#d6456b" stroke-width="2"/>
+            <circle cx="122" cy="44" r="5" fill="#ffc2d1"/>
+            <circle cx="158" cy="44" r="10.5" fill="#ff8fab" stroke="#d6456b" stroke-width="2"/>
+            <circle cx="158" cy="44" r="5" fill="#ffc2d1"/>
+            <!-- Body -->
+            <ellipse cx="140" cy="96" rx="22" ry="22" fill="#ff8fab" stroke="#d6456b" stroke-width="2"/>
+            <ellipse cx="140" cy="98" rx="13" ry="13" fill="#ffe5ec"/>
+            <!-- Head -->
+            <ellipse cx="140" cy="62" rx="23.5" ry="20" fill="#ff8fab" stroke="#d6456b" stroke-width="2"/>
+            <!-- Muzzle -->
+            <ellipse cx="140" cy="67" rx="9.5" ry="7" fill="#fff0f3"/>
+            <ellipse cx="140" cy="64.5" rx="3.2" ry="2" fill="#800f2f"/>
+            <!-- Cute Squint Eyes & Kissy Smile -->
+            <path d="M130 57 L135 59 L130 61" stroke="#590d22" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M150 57 L145 59 L150 61" stroke="#590d22" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M137 69 Q140 72 143 69" stroke="#800f2f" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- Blush -->
+            <ellipse cx="126" cy="64" rx="4" ry="2.2" fill="#ff4d6d" opacity="0.65"/>
+            <ellipse cx="154" cy="64" rx="4" ry="2.2" fill="#ff4d6d" opacity="0.65"/>
+            <!-- Hugging Arm Wrapping Brown Teddy -->
+            <ellipse cx="116" cy="88" rx="13" ry="6.5" transform="rotate(18 116 88)" fill="#ff8fab" stroke="#d6456b" stroke-width="2"/>
+          </g>
+        </svg>
+      </div>
+
       <div class="top-tag">🏎️ • ROYAL EDITION • 🏍️</div>
-      <h1>Happy Birthday, My King 👑</h1>
-      <p>Every mile with you is my favorite adventure. Unlock each of your three birthday gifts below.</p>
+      <h1>Happy Birthday, My Love 👑</h1>
+      <p>Tap each gift box below to open your birthday surprises.</p>
     </div>
 
     <div class="gifts-container">
-      <!-- Gift 1: 10 Photos -->
+      <!-- Gift 1: 7 Photos -->
       <div class="gift-card" onclick="openModal('modal-photos')">
-        <div class="gift-badge">VAULT 01 • GALLERY</div>
+        <div class="gift-badge">GIFT 01 • OUR MEMORIES</div>
         <div class="gift-emoji">📸🏎️</div>
-        <h3>10 Miles of Memories</h3>
-        <p>Ten unforgettable snapshots from our journey together—every frame worth a thousand miles.</p>
-        <span class="open-pill">Open Photo Vault →</span>
+        <h3>7 Favorite Moments</h3>
+        <p>Seven snapshots of us that always bring a smile to my face.</p>
+        <span class="open-pill">Open Photo Gallery →</span>
       </div>
 
-      <!-- Gift 2: Lengthy Royal Letter -->
+      <!-- Gift 2: Your Exact Letter -->
       <div class="gift-card featured-gift" onclick="openModal('modal-letter')">
-        <div class="gift-badge">VAULT 02 • PERSONAL LETTER</div>
-        <div class="gift-emoji">📜👑</div>
-        <h3>A Letter Written For You</h3>
-        <p>Every thought, wish, and reason why you mean the world to me, penned just for today.</p>
-        <span class="open-pill">Read The Letter →</span>
+        <div class="gift-badge">GIFT 02 • FOR YOU</div>
+        <div class="gift-emoji">💌👑</div>
+        <h3>My Birthday Note</h3>
+        <p>A few things straight from my heart that I wanted to tell you today.</p>
+        <span class="open-pill">Read My Words →</span>
       </div>
 
-      <!-- Gift 3: Interactive Car & Bike VIP Passes -->
-      <div class="gift-card" onclick="openModal('modal-vouchers')">
-        <div class="gift-badge">VAULT 03 • VIP GARAGE</div>
-        <div class="gift-emoji">🏍️🎟️</div>
-        <h3>Rider & Driver VIP Passes</h3>
-        <p>Exclusive birthday experiences, drives, and treats ready for you to claim whenever you want.</p>
-        <span class="open-pill">Claim VIP Passes →</span>
+      <!-- Gift 3: Interactive Couple Quiz -->
+      <div class="gift-card" onclick="openQuizModal()">
+        <div class="gift-badge">GIFT 03 • FUN CHALLENGE</div>
+        <div class="gift-emoji">🏍️🎯</div>
+        <h3>All About You & Us</h3>
+        <p>A fun little quiz about you, your vibe, and our moments together!</p>
+        <span class="open-pill">Start The Quiz →</span>
       </div>
     </div>
   </section>
 
-  <!-- MODAL 1: 10 PHOTO MEMORIES -->
+  <!-- MODAL 1: 7 PHOTO MEMORIES -->
   <div id="modal-photos" class="modal">
     <div class="modal-content wide-modal">
       <button class="close-btn" onclick="closeModal('modal-photos')">&times;</button>
       <div class="modal-header">
         <span class="modal-tag">OUR JOURNEY IN FRAMES</span>
-        <h2>10 Unforgettable Moments Together 🏎️✨</h2>
-        <p class="modal-sub">No matter the road, having you beside me makes every destination worthwhile.</p>
+        <h2>7 Unforgettable Moments Together 🏎️✨</h2>
+        <p class="modal-sub">Every picture with you is my favorite memory.</p>
       </div>
 
       <div class="photo-grid">
-        <!-- Put your 10 photos in the 'photos/' folder named 1.jpg to 10.jpg -->
-        <div class="luxury-frame"><img src="photos/1.jpg" alt="Memory 1"><div class="frame-caption"><span>01</span> Where the journey began ✨</div></div>
-        <div class="luxury-frame"><img src="photos/2.jpg" alt="Memory 2"><div class="frame-caption"><span>02</span> My favorite smile on any road 😊</div></div>
-        <div class="luxury-frame"><img src="photos/3.jpg" alt="Memory 3"><div class="frame-caption"><span>03</span> Pure happiness & good vibes 🌟</div></div>
-        <div class="luxury-frame"><img src="photos/4.jpg" alt="Memory 4"><div class="frame-caption"><span>04</span> Always my #1 co-pilot 🏎️</div></div>
-        <div class="luxury-frame"><img src="photos/5.jpg" alt="Memory 5"><div class="frame-caption"><span>05</span> A moment frozen in gold 👑</div></div>
-        <div class="luxury-frame"><img src="photos/6.jpg" alt="Memory 6"><div class="frame-caption"><span>06</span> Effortless laughs & endless talks 🌙</div></div>
-        <div class="luxury-frame"><img src="photos/7.jpg" alt="Memory 7"><div class="frame-caption"><span>07</span> Side by side through everything 💙</div></div>
-        <div class="luxury-frame"><img src="photos/8.jpg" alt="Memory 8"><div class="frame-caption"><span>08</span> My safest place in the world ⚓</div></div>
-        <div class="luxury-frame"><img src="photos/9.jpg" alt="Memory 9"><div class="frame-caption"><span>09</span> Looking at you like this forever 😍</div></div>
-        <div class="luxury-frame"><img src="photos/10.jpg" alt="Memory 10"><div class="frame-caption"><span>10</span> Here's to a lifetime of rides 🏍️🥂</div></div>
+        <div class="luxury-frame"><img src="1.jpg.jpeg" alt="Memory 1"><div class="frame-caption"><span>01</span> My favorite person ✨</div></div>
+        <div class="luxury-frame"><img src="2.jpg.jpeg" alt="Memory 2"><div class="frame-caption"><span>02</span> Always better together 😊</div></div>
+        <div class="luxury-frame"><img src="3.jpg.jpeg" alt="Memory 3"><div class="frame-caption"><span>03</span> Best vibes only 🌟</div></div>
+        <div class="luxury-frame"><img src="4.jpg.jpeg" alt="Memory 4"><div class="frame-caption"><span>04</span> My #1 co-pilot 🏎️</div></div>
+        <div class="luxury-frame"><img src="5.jpg.jpeg" alt="Memory 5"><div class="frame-caption"><span>05</span> A moment worth keeping 👑</div></div>
+        <div class="luxury-frame"><img src="6.jpg.jpeg" alt="Memory 6"><div class="frame-caption"><span>06</span> Endless laughs with you 💙</div></div>
+        <div class="luxury-frame"><img src="7.jpg.jpeg" alt="Memory 7"><div class="frame-caption"><span>07</span> Here's to many more rides 🏍️🥂</div></div>
       </div>
     </div>
   </div>
 
-  <!-- MODAL 2: LONG LENGTHY BIRTHDAY LETTER -->
+  <!-- MODAL 2: YOUR EXACT BIRTHDAY LETTER -->
   <div id="modal-letter" class="modal">
     <div class="modal-content royal-scroll">
       <button class="close-btn" onclick="closeModal('modal-letter')">&times;</button>
       <div class="letter-header">
-        <p class="letter-date">NOVEMBER 15, 2026 • SPECIAL BIRTHDAY EDITION</p>
-        <h2>To The Man Who Holds My Heart,</h2>
+        <p class="letter-date">HAPPY BIRTHDAY EDITION</p>
+        <h2>Here are the few things I wanna say 😁</h2>
       </div>
 
-      <!-- CUSTOMIZE HERE: Edit or add your personal memories and thoughts below -->
       <div class="letter-body">
-        <p>Happy Birthday, my love! Today is a celebration of the most extraordinary person in my life—the man whose presence brings calm to my chaos, strength to my hardest days, and genuine joy to every ordinary moment. I wanted to build this royal little corner of the internet just for you so that whenever you want, you can open it and feel how deeply cherished you truly are.</p>
+        <p>1. No matter enta mad ga nen behave chesina or koppadinaa tirigi occhesta ni daggaraki nuvvem bhayapadaku... Ala ani aaa point ni tiskoni nato adukoku 😒💓</p>
 
-        <p>People often say that life is a long highway full of unexpected turns, and if that’s true, then having you in the driver’s seat—or riding right alongside me—is the greatest blessing I could ever ask for. Whether we are cruising down the road talking about everything and nothing, sharing quiet glances, or laughing until our stomachs hurt, every single mile with you feels effortless and real.</p>
+        <p>2. Nen anni aypoyay kabatti unna ani Enduku anukuntunnavooo nak telidu the reason I was staying is I LOVE U ❤️ ante... Daniki reason adigite na daggara ledu modddu 😁</p>
 
-        <p>There are so many things about you that I admire more than words can easily capture. I admire your drive, your ambition, the quiet resilience you carry when things get tough, and the genuine respect and warmth you show to the people you love. You have a rare kind of character—strong, grounded, and loyal—and watching you chase your goals makes me endlessly proud to call you mine.</p>
+        <p><strong>APPPPYYYYY BIRTHDAYYYYYY</strong><br>
+        idigoo na giftuuuuu 😚😚😚😚</p>
 
-        <p>Thank you for the thousand little things you do without ever asking for credit: the way you check in on me, the way you listen patiently, the way your eyes light up when you talk about the things you love—whether it's machines, engines, or your big plans for the future—and the way you make me feel completely safe just by holding my hand.</p>
-
-        <p>[Add your own personal paragraph here! Write about your favorite ride or date together, a specific memory from this past year, or an inside joke that always makes you both smile.]</p>
-
-        <p>As you step into this new year of your life, my biggest prayer and wish for you is boundless success, rock-solid health, peace of mind, and every dream you’ve been working hard toward finally landing right in your hands. May your roads always be clear, your engines always roar strong, and your heart always stay full. No matter where life takes us next, remember that you will always have my unwavering support, my loudest cheers, and all of my love.</p>
-
-        <p>Happy Birthday once again, my handsome king. Let’s make this year unforgettable.</p>
-
-        <p class="letter-sign">Forever your co-pilot & biggest fan,<br><span>Bhargavi 💙👑</span></p>
+        <p class="letter-sign">Yours,<br><span>Bhargavi 💙</span></p>
       </div>
     </div>
   </div>
 
-  <!-- MODAL 3: INTERACTIVE CAR & BIKE VIP PASSES -->
-  <div id="modal-vouchers" class="modal">
+  <!-- MODAL 3: INTERACTIVE QUIZ WITH PINK & BROWN TEDDY POP-UP ANIMATION -->
+  <div id="modal-quiz" class="modal">
     <div class="modal-content">
-      <button class="close-btn" onclick="closeModal('modal-vouchers')">&times;</button>
+      <button class="close-btn" onclick="closeModal('modal-quiz')">&times;</button>
       <div class="modal-header">
-        <span class="modal-tag">EXCLUSIVE BIRTHDAY PRIVILEGES</span>
-        <h2>Your Royal Garage & Date Passes 🏎️🏍️</h2>
-        <p class="modal-sub">Tap any pass to activate it—take a screenshot and redeem it with me anytime!</p>
+        <span class="modal-tag">BIRTHDAY MINI-GAME</span>
+        <h2>All About You & Us 🏎️🏍️</h2>
+        <p class="modal-sub">Answer honestly—let's see what you pick!</p>
       </div>
 
-      <div class="voucher-list">
-        <div class="voucher" onclick="redeemVoucher(this)">
-          <div>
-            <h4>🏎️ Midnight Long Drive & Your Playlist</h4>
-            <p>Full control of the aux cord, open roads, and zero rush to be anywhere.</p>
-          </div>
-          <span class="redeem-status">Activate Pass</span>
-        </div>
+      <div class="quiz-box" id="quizBox">
+        <div class="quiz-progress" id="quizProgress">QUESTION 1 OF 6</div>
+        <div class="quiz-question" id="quizQuestion"></div>
+        <div class="quiz-options" id="quizOptions"></div>
 
-        <div class="voucher" onclick="redeemVoucher(this)">
-          <div>
-            <h4>🏍️ Scenic Bike Ride & Sunset Coffee Run</h4>
-            <p>Just the two of us, cool breeze, and your favorite hangout spot.</p>
-          </div>
-          <span class="redeem-status">Activate Pass</span>
-        </div>
+        <!-- Pop-up Reaction with Pink & Brown Teddy Teasing/Hugging Animation -->
+        <div class="quiz-reaction-wrap" id="quizReactionWrap">
+          <div class="teddy-stage" style="height: 110px; margin-bottom: 0.5rem;">
+            <svg class="teddy-svg" viewBox="0 0 220 125">
+              <text x="98" y="24" font-size="18" class="teddy-heart">💕</text>
+              <text x="124" y="18" font-size="15" class="teddy-heart-2">✨</text>
 
-        <div class="voucher" onclick="redeemVoucher(this)">
-          <div>
-            <h4>🍽️ Royal Dinner Feast (Your Choice)</h4>
-            <p>You pick the restaurant, the dishes, and the dessert—my treat completely.</p>
-          </div>
-          <span class="redeem-status">Activate Pass</span>
-        </div>
+              <!-- BROWN TEDDY -->
+              <g class="brown-teddy">
+                <circle cx="58" cy="42" r="11" fill="#8d5524" stroke="#5c3310" stroke-width="2"/>
+                <circle cx="58" cy="42" r="5.5" fill="#c68642"/>
+                <circle cx="96" cy="42" r="11" fill="#8d5524" stroke="#5c3310" stroke-width="2"/>
+                <circle cx="96" cy="42" r="5.5" fill="#c68642"/>
+                <ellipse cx="77" cy="95" rx="24" ry="23" fill="#8d5524" stroke="#5c3310" stroke-width="2"/>
+                <ellipse cx="77" cy="97" rx="14" ry="14" fill="#c68642"/>
+                <ellipse cx="77" cy="60" rx="25" ry="21" fill="#8d5524" stroke="#5c3310" stroke-width="2"/>
+                <ellipse cx="77" cy="65" rx="10" ry="7.5" fill="#f3d5b5"/>
+                <ellipse cx="77" cy="62.5" rx="3.5" ry="2.2" fill="#3d1e08"/>
+                <circle cx="68" cy="56" r="2.3" fill="#2b1202"/>
+                <circle cx="86" cy="56" r="2.3" fill="#2b1202"/>
+                <path d="M73 67 Q77 71 81 67" stroke="#3d1e08" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <ellipse cx="62" cy="62" rx="4" ry="2.2" fill="#ff8fa3" opacity="0.7"/>
+                <ellipse cx="92" cy="62" rx="4" ry="2.2" fill="#ff8fa3" opacity="0.7"/>
+              </g>
 
-        <div class="voucher" onclick="redeemVoucher(this)">
-          <div>
-            <h4>👑 All-Day King Treatment & No-Stress Pass</h4>
-            <p>Valid on any tiring day: unlimited affection, zero complaints, and full pampering.</p>
-          </div>
-          <span class="redeem-status">Activate Pass</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // CUSTOMIZE HERE: Change '1511' to your desired 4-digit passcode
-    const CORRECT_PASSCODE = "1216";
-    let enteredCode = "";
-
-    function updateDisplay() {
-      let display = "";
-      for (let i = 0; i < 4; i++) {
-        display += enteredCode[i] ? "◆ " : "_ ";
-      }
-      document.getElementById("passcodeDisplay").textContent = display.trim();
-    }
-
-    function pressKey(num) {
-      if (enteredCode.length < 4) {
-        enteredCode += num;
-        updateDisplay();
-        document.getElementById("error-msg").textContent = "";
-      }
-    }
-
-    function clearCode() {
-      enteredCode = "";
-      updateDisplay();
-      document.getElementById("error-msg").textContent = "";
-    }
-
-    function checkPasscode() {
-      if (enteredCode === CORRECT_PASSCODE) {
-        document.getElementById("lock-screen").classList.remove("active");
-        document.getElementById("gifts-screen").classList.add("active");
-        launchRoyalParticles();
-      } else {
-        document.getElementById("error-msg").textContent = "Access Denied — Check your key code & try again 🔑";
-        enteredCode = "";
-        updateDisplay();
-      }
-    }
-
-    function openModal(id) {
-      document.getElementById(id).style.display = "flex";
-    }
-
-    function closeModal(id) {
-      document.getElementById(id).style.display = "none";
-    }
-
-    function redeemVoucher(el) {
-      el.classList.toggle("claimed");
-      const status = el.querySelector(".redeem-status");
-      status.textContent = el.classList.contains("claimed") ? "UNLOCKED ✅" : "Activate Pass";
-    }
-
-    // Subtle floating royal sparkles & motor emblems
-    function launchRoyalParticles() {
-      const container = document.getElementById("ambientBg");
-      const icons = ["✨", "💎", "👑", "🏎️", "🏍️", "💠"];
-      setInterval(() => {
-        const el = document.createElement("div");
-        el.className = "floating-particle";
-        el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-        el.style.left = Math.random() * 100 + "vw";
-        el.style.animationDuration = (Math.random() * 4 + 5) + "s";
-        container.appendChild(el);
-        setTimeout(() => el.remove(), 9000);
-      }, 750);
-    }
-  </script>
-</body>
-</html>
+              <!-- PINK TEDDY TEASING & POUNCING ON BROWN TEDDY -->
+              <g class="pink-teddy-tease">
+                <circle cx="122" cy="44" r="10.5" fill="#ff8fab" stroke="#d6456b" stroke-width="2"/>
+                <circle cx="122" cy="44" r="5" fill="#ffc2d1"/>
+                <circle cx="158" cy="44" r="10.5" fill="#ff8fab" stroke="#d6456b" stroke-width="2"/>
+                <circle cx="158" cy="44" r="5" fill="#ffc2d1"/>
+                <ellipse cx="140" cy="96" rx="22" ry="22" fill="#ff8fab" stroke="#d6456b" stroke-width="2"/>
+                <ellipse cx="140" cy="98" rx="13" ry="13" fill="#ffe5ec"/>
+                <ellipse cx="140" cy="62" rx="23.5" ry="20" fill="#ff8fab" stroke="#d6456b" stroke-width="2"/>
+                <ellipse cx="140" cy="67" rx="9.5" ry="7" fill="#fff0f3"/>
+                <ellipse cx="140" cy="64.5" rx="3.2" ry="2" fill="#800f2f"/>
+                <!-- Cheeky Wink & Tongue Tease -->
+                <path d="M130 57 L135 59 L130 61" stroke="#590d22" stroke-width="2" fill="none"
