@@ -482,5 +482,421 @@
           </div>
           <div id="quizReaction"></div>
         </div>
+<!-- MODAL 4: GRAND BIRTHDAY FINALE (FIREWORKS + LILIES + HEARTS + 5 MILK & MOCHA ANIMATIONS) -->
+  <div id="modal-finale" class="modal">
+    <canvas id="fireworksCanvas"></canvas>
+    <div id="finaleBurstLayer"></div>
 
-        <button type="button" class="quiz-next-btn" id="quizNextBtn" onclick="next
+    <div class="finale-container">
+      <button type="button" class="close-btn" onclick="closeFinaleModal()">&times;</button>
+
+      <div class="lily-banner">🌸 🌷 💮 💖 🌷 🌸</div>
+
+      <!-- TOP ROW: 3 MILK & MOCHA ANIMATIONS (1. HUGGING, 2. TEASING, 3. CUDDLING) -->
+      <div class="finale-row">
+        <!-- 1. HUGGING -->
+        <div class="mini-bear-card">
+          <img src="hug.gif" alt="Hugging" style="width:100%; height:112px; object-fit:cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <svg viewBox="0 0 180 140" width="144" height="112" style="display:none;">
+            <text x="80" y="24" font-size="16" class="float-love">💖</text>
+            <g class="mocha-body">
+              <circle cx="48" cy="46" r="10" fill="#b07d4f" stroke="#4a2c18" stroke-width="3"/>
+              <circle cx="88" cy="46" r="10" fill="#b07d4f" stroke="#4a2c18" stroke-width="3"/>
+              <ellipse cx="68" cy="103" rx="22" ry="23" fill="#b07d4f" stroke="#4a2c18" stroke-width="3"/>
+              <ellipse cx="68" cy="67" rx="26" ry="23" fill="#b07d4f" stroke="#4a2c18" stroke-width="3"/>
+              <ellipse cx="56" cy="69" rx="4.5" ry="2.5" fill="#ff758f" opacity="0.75"/>
+            </g>
+            <g class="milk-kiss">
+              <circle cx="102" cy="41" r="10" fill="#ffffff" stroke="#4a2c18" stroke-width="3"/>
+              <circle cx="138" cy="43" r="10" fill="#ffffff" stroke="#4a2c18" stroke-width="3"/>
+              <ellipse cx="118" cy="102" rx="23" ry="24" fill="#ffffff" stroke="#4a2c18" stroke-width="3"/>
+              <ellipse cx="116" cy="66" rx="27" ry="25" fill="#ffffff" stroke="#4a2c18" stroke-width="3"/>
+              <ellipse cx="102" cy="69" rx="5" ry="3.2" fill="#ffc2d1" opacity="0.85"/>
+              <ellipse cx="95" cy="91" rx="13" ry="6.5" fill="#ffffff" stroke="#4a2c18" stroke-width="3"/>
+            </g>
+          </svg>
+          <div class="bear-label">1. Tight Hugs 🤗</div>
+        </div>
+
+        <!-- 2. TEASING -->
+        <div class="mini-bear-card">
+          <img src="tease.gif" alt="Teasing" style="width:100%; height:112px; object-fit:cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <svg viewBox="0 0 180 140" width="144" height="112" style="display:none;">
+            <text x="82" y="24" font-size="16" class="float-love">😜</text>
+            <g class="mocha-body">
+              <circle cx="48" cy="46" r="10" fill="#b07d4f" stroke="#4a2c18" stroke-width="3"/>
+              <circle cx="88" cy="46" r="10" fill="#b07d4f" stroke="#4a2c18" stroke-width="3"/>
+              <ellipse cx="68" cy="103" rx="22" ry="23" fill="#b07d4f" stroke="#4a2c18" stroke-width="3"/>
+              <ellipse cx="68" cy="67" rx="26" ry="23" fill="#b07d4f" stroke="#4a2c18" stroke-width="3"/>
+              <circle cx="65" cy="62" r="2.5" fill="#4a2c18"/>
+            </g>
+            <g class="milk-tease">
+              <circle cx="102" cy="41" r="10" fill="#ffffff" stroke="#4a2c18" stroke-width="3"/>
+              <circle cx="138" cy="43" r="10" fill="#ffffff" stroke="#4a2c18" stroke-width="3"/>
+              <ellipse cx="118" cy="102" rx="23" ry="24" fill="#ffffff" stroke="#4a2c18" stroke-width="3"/>
+              <ellipse cx="116" cy="66" rx="27" ry="25" fill="#ffffff" stroke="#4a2c18" stroke-width="3"/>
+              <path d="M91 61 L96 63 L91 65" stroke="#4a2c18" stroke-width="2.4" fill="none"/>
+              <ellipse cx="90" cy="85" rx="14" ry="6.5" transform="rotate(15 90 85)" fill="#ffffff" stroke="#4a2c18" stroke-width="3"/>
+            </g>
+          </svg>
+          <div class="bear-label">2. Teasing You 😜</div>
+        </div>
+
+        <!-- 3. CUDDLING -->
+        <div class="mini-bear-card">
+          <img src="cuddle.gif" alt="Cuddling" style="width:100%; height:112px; object-fit:cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <svg viewBox="0 0 180 140" width="144" height="112" style="display:none;">
+            <text x="82" y="22" font-size="16" class="float-love">🥰</text>
+            <g class="cuddle-sway">
+              <circle cx="54" cy="48" r="10" fill="#b07d4f" stroke="#4a2c18" stroke-width="3"/>
+              <circle cx="88" cy="48" r="10" fill="#b07d4f" stroke="#4a2c18" stroke-width="3"/>
+              <ellipse cx="72" cy="104" rx="23" ry="22" fill="#b07d4f" stroke="#4a2c18" stroke-width="3"/>
+              <ellipse cx="72" cy="69" rx="25" ry="22" fill="#b07d4f" stroke="#4a2c18" stroke-width="3"/>
+              <path d="M62 65 Q66 61 70 65" stroke="#4a2c18" stroke-width="2.3" fill="none"/>
+
+              <circle cx="94" cy="48" r="10" fill="#ffffff" stroke="#4a2c18" stroke-width="3"/>
+              <circle cx="128" cy="48" r="10" fill="#ffffff" stroke="#4a2c18" stroke-width="3"/>
+              <ellipse cx="110" cy="104" rx="23" ry="22" fill="#ffffff" stroke="#4a2c18" stroke-width="3"/>
+              <ellipse cx="110" cy="69" rx="25" ry="22" fill="#ffffff" stroke="#4a2c18" stroke-width="3"/>
+              <path d="M108 65 Q112 61 116 65" stroke="#4a2c18" stroke-width="2.3" fill="none"/>
+              <ellipse cx="102" cy="72" rx="4.5" ry="2.5" fill="#ff8fa3" opacity="0.85"/>
+              <ellipse cx="80" cy="72" rx="4.5" ry="2.5" fill="#ff8fa3" opacity="0.85"/>
+            </g>
+          </svg>
+          <div class="bear-label">3. Cozy Cuddles 🥰</div>
+        </div>
+      </div>
+
+      <!-- CENTERPIECE: GRAND BIRTHDAY WISH -->
+      <div class="grand-wish-center">
+        <div class="top-tag">🎆 🌸 ROYAL BIRTHDAY CELEBRATION 🌸 🎆</div>
+        <h1 class="grand-wish-title">HAPPY BIRTHDAY TO YOU! 🎂👑</h1>
+        <div class="lily-banner">🌸 💮 🌷 💕 🌷 💮 🌸</div>
+        <p class="finale-subwish">
+          May every road you ride bring you happiness, success, and endless smiles—and remember I'm always right beside you, cheering loudest for you! I LOVE YOU! 💙😚✨
+        </p>
+        <button type="button" class="mega-blast-btn" onclick="triggerMegaCelebration()">
+          🎆 Tap for Extra Fireworks, Lilies & Hearts! 🌸💖
+        </button>
+      </div>
+
+      <!-- BOTTOM ROW: 2 MORE MILK & MOCHA ANIMATIONS (4. PLAYING AROUND, 5. BIRTHDAY CAKE & KISSES) -->
+      <div class="finale-row">
+        <!-- 4. PLAYING AROUND -->
+        <div class="mini-bear-card">
+          <img src="play.gif" alt="Playing Around" style="width:100%; height:112px; object-fit:cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <svg viewBox="0 0 180 140" width="144" height="112" style="display:none;">
+            <text x="82" y="22" font-size="16" class="float-love">✨</text>
+            <g class="play-jump-left">
+              <circle cx="44" cy="48" r="9.5" fill="#b07d4f" stroke="#4a2c18" stroke-width="3"/>
+              <circle cx="78" cy="48" r="9.5" fill="#b07d4f" stroke="#4a2c18" stroke-width="3"/>
+              <ellipse cx="61" cy="102" rx="20" ry="21" fill="#b07d4f" stroke="#4a2c18" stroke-width="3"/>
+              <ellipse cx="61" cy="68" rx="23" ry="20" fill="#b07d4f" stroke="#4a2c18" stroke-width="3"/>
+              <circle cx="55" cy="64" r="2.2" fill="#4a2c18"/>
+              <circle cx="68" cy="64" r="2.2" fill="#4a2c18"/>
+              <path d="M58 71 Q61 75 64 71" stroke="#4a2c18" stroke-width="2" fill="none"/>
+            </g>
+            <g class="play-jump-right">
+              <circle cx="102" cy="48" r="9.5" fill="#ffffff" stroke="#4a2c18" stroke-width="3"/>
+              <circle cx="136" cy="48" r="9.5" fill="#ffffff" stroke="#4a2c18" stroke-width="3"/>
+              <ellipse cx="119" cy="102" rx="20" ry="21" fill="#ffffff" stroke="#4a2c18" stroke-width="3"/>
+              <ellipse cx="119" cy="68" rx="23" ry="20" fill="#ffffff" stroke="#4a2c18" stroke-width="3"/>
+              <circle cx="113" cy="64" r="2.2" fill="#4a2c18"/>
+              <circle cx="126" cy="64" r="2.2" fill="#4a2c18"/>
+              <path d="M116 71 Q119 75 122 71" stroke="#4a2c18" stroke-width="2" fill="none"/>
+            </g>
+          </svg>
+          <div class="bear-label">4. Playing Around 🎉</div>
+        </div>
+
+        <!-- 5. BIRTHDAY CAKE & FLYING KISSES -->
+        <div class="mini-bear-card">
+          <img src="cake.gif" alt="Birthday Cake & Kisses" style="width:100%; height:112px; object-fit:cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <svg viewBox="0 0 180 140" width="144" height="112" style="display:none;">
+            <text x="82" y="22" font-size="16" class="float-love">💋</text>
+            <g class="cake-bounce">
+              <circle cx="46" cy="48" r="9.5" fill="#b07d4f" stroke="#4a2c18" stroke-width="3"/>
+              <ellipse cx="62" cy="72" rx="22" ry="20" fill="#b07d4f" stroke="#4a2c18" stroke-width="3"/>
+              <circle cx="134" cy="48" r="9.5" fill="#ffffff" stroke="#4a2c18" stroke-width="3"/>
+              <ellipse cx="118" cy="72" rx="22" ry="20" fill="#ffffff" stroke="#4a2c18" stroke-width="3"/>
+              <rect x="68" y="96" width="44" height="24" rx="6" fill="#ff8fab" stroke="#4a2c18" stroke-width="2.5"/>
+              <rect x="68" y="96" width="44" height="8" rx="4" fill="#fff0f3"/>
+              <rect x="88" y="82" width="4" height="14" fill="#2dd4bf"/>
+              <circle cx="90" cy="79" r="3.5" fill="#fbbf24"/>
+            </g>
+          </svg>
+          <div class="bear-label">5. Cake & Kisses 🎂💋</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const CORRECT_PASSCODE = "1216";
+    let enteredCode = "";
+
+    function updateDisplay() {
+      let display = "";
+      for (let i = 0; i < 4; i++) {
+        display += enteredCode[i] ? "◆ " : "_ ";
+      }
+      document.getElementById("passcodeDisplay").textContent = display.trim();
+    }
+
+    function pressKey(num) {
+      if (enteredCode.length < 4) {
+        enteredCode += String(num);
+        updateDisplay();
+        document.getElementById("error-msg").textContent = "";
+      }
+    }
+
+    function clearCode() {
+      enteredCode = "";
+      updateDisplay();
+      document.getElementById("error-msg").textContent = "";
+    }
+
+    function checkPasscode() {
+      if (enteredCode === CORRECT_PASSCODE) {
+        document.getElementById("lock-screen").classList.remove("active");
+        document.getElementById("gifts-screen").classList.add("active");
+        launchRoyalParticles();
+      } else {
+        document.getElementById("error-msg").textContent = "Access Denied — Try again 🔑";
+        enteredCode = "";
+        updateDisplay();
+      }
+    }
+
+    document.addEventListener("keydown", function (e) {
+      if (!document.getElementById("lock-screen").classList.contains("active")) return;
+      if (e.key >= "0" && e.key <= "9") pressKey(e.key);
+      else if (e.key === "Backspace") { enteredCode = enteredCode.slice(0, -1); updateDisplay(); }
+      else if (e.key === "Enter") checkPasscode();
+    });
+
+    function openModal(id) { document.getElementById(id).style.display = "flex"; }
+    function closeModal(id) { document.getElementById(id).style.display = "none"; }
+
+    const quizData = [
+      {
+        q: "1. What is the #1 thing about you that makes me fall for you all over again?",
+        options: [
+          "Your smile and the way you look at me",
+          "How calm and strong you stay in every situation",
+          "The way you care for me in little ways without even showing off"
+        ],
+        reaction: "Honestly, it's all of these—you don't even realize how special you are to me! 💙"
+      },
+      {
+        q: "2. What happens the second you sit in the driver's seat or get on your bike?",
+        options: [
+          "Full hero mode ON 🏍️🏎️",
+          "Instant peace and focus on the road",
+          "Checking if I'm comfortable first before starting"
+        ],
+        reaction: "Best driver/rider ever—and I feel safest whenever I'm riding with you! 👑"
+      },
+      {
+        q: "3. Which version of you is my absolute favorite?",
+        options: [
+          "Serious & focused on your goals",
+          "Playful, teasing me, and cracking jokes",
+          "Soft & caring when it's just the two of us"
+        ],
+        reaction: "Every side of you is my favorite, especially when you're just being yourself with me. ❤️"
+      },
+      {
+        q: "4. Who gets possessive or moody faster, and who ends up smiling first?",
+        options: [
+          "I get mad, and I also come back first 😒💓",
+          "You always make me laugh even when I try to stay serious",
+          "Both of us can't stay mad for long!"
+        ],
+        reaction: "Enta koppadinaa malli ni daggarake occhesta... kani nannu ekkuva sataayinchaku modddu! 😁❤️"
+      },
+      {
+        q: "5. What is your #1 responsibility as my boyfriend?",
+        options: [
+          "Pampering me when I'm overthinking",
+          "Giving me unlimited rides and food treats",
+          "Keeping me happy and spoiling me with your time & attention 👑"
+        ],
+        reaction: "All three are locked in! No excuses, no escapes—you're stuck with me forever! 😚💙"
+      },
+      {
+        q: "6. Who fell harder and loves the other person more?",
+        options: [
+          "You",
+          "Me (Bhargavi)",
+          "Equal competition every single day!"
+        ],
+        reaction: "🎉 No debate—I LOVE U without any reason, and today is all about celebrating you! Happy Birthday! 😚🎂"
+      }
+    ];
+
+    let currentQ = 0;
+
+    function openQuizModal() {
+      currentQ = 0;
+      renderQuestion();
+      openModal("modal-quiz");
+    }
+
+    function renderQuestion() {
+      const item = quizData[currentQ];
+      document.getElementById("quizProgress").textContent = `QUESTION ${currentQ + 1} OF ${quizData.length}`;
+      document.getElementById("quizQuestion").textContent = item.q;
+      const optionsDiv = document.getElementById("quizOptions");
+      optionsDiv.innerHTML = "";
+      item.options.forEach((opt) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "quiz-option-btn";
+        btn.textContent = opt;
+        btn.onclick = () => selectAnswer(item.reaction);
+        optionsDiv.appendChild(btn);
+      });
+      document.getElementById("quizReactionWrap").style.display = "none";
+      document.getElementById("quizNextBtn").style.display = "none";
+    }
+
+    function selectAnswer(reactionText) {
+      document.getElementById("quizReaction").textContent = reactionText;
+      document.getElementById("quizReactionWrap").style.display = "block";
+      const nextBtn = document.getElementById("quizNextBtn");
+      nextBtn.textContent = currentQ < quizData.length - 1 ? "Next Question →" : "Play Again ↻";
+      nextBtn.style.display = "inline-block";
+    }
+
+    function nextQuestion() {
+      currentQ = currentQ < quizData.length - 1 ? currentQ + 1 : 0;
+      renderQuestion();
+    }
+
+    let finaleActive = false;
+    let fireworksLoopId = null;
+    let petalTimerId = null;
+    let particles = [];
+
+    function openFinaleModal() {
+      openModal("modal-finale");
+      finaleActive = true;
+      startFireworksEngine();
+      triggerMegaCelebration();
+      petalTimerId = setInterval(() => spawnLiliesAndHearts(8), 700);
+    }
+
+    function closeFinaleModal() {
+      finaleActive = false;
+      closeModal("modal-finale");
+      if (fireworksLoopId) cancelAnimationFrame(fireworksLoopId);
+      if (petalTimerId) clearInterval(petalTimerId);
+      particles = [];
+      document.getElementById("finaleBurstLayer").innerHTML = "";
+    }
+
+    function spawnLiliesAndHearts(count) {
+      const layer = document.getElementById("finaleBurstLayer");
+      const items = ["🌸", "🌷", "💮", "💖", "💕", "💗", "💙", "✨", "💓", "💐"];
+      for (let i = 0; i < count; i++) {
+        const el = document.createElement("div");
+        el.className = "pop-item";
+        el.textContent = items[Math.floor(Math.random() * items.length)];
+        el.style.left = (Math.random() * 94 + 3) + "vw";
+        el.style.bottom = (Math.random() * 25 + 2) + "vh";
+        el.style.fontSize = (Math.random() * 18 + 18) + "px";
+        layer.appendChild(el);
+        setTimeout(() => el.remove(), 3600);
+      }
+    }
+
+    function triggerMegaCelebration() {
+      spawnLiliesAndHearts(28);
+      for (let b = 0; b < 6; b++) {
+        setTimeout(() => {
+          createFireworkBurst(
+            Math.random() * window.innerWidth * 0.8 + window.innerWidth * 0.1,
+            Math.random() * window.innerHeight * 0.45 + 60
+          );
+        }, b * 240);
+      }
+    }
+
+    function createFireworkBurst(x, y) {
+      const colors = ["#2dd4bf", "#f5df96", "#ff8fab", "#38bdf8", "#fb7185", "#fde047"];
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      for (let i = 0; i < 48; i++) {
+        const angle = (Math.PI * 2 * i) / 48;
+        const speed = Math.random() * 4.5 + 1.8;
+        particles.push({
+          x,
+          y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          alpha: 1,
+          color,
+          size: Math.random() * 2.6 + 1.5
+        });
+      }
+    }
+
+    function startFireworksEngine() {
+      const canvas = document.getElementById("fireworksCanvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      let tick = 0;
+      function animate() {
+        if (!finaleActive) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        tick++;
+        if (tick % 32 === 0) {
+          createFireworkBurst(
+            Math.random() * canvas.width * 0.8 + canvas.width * 0.1,
+            Math.random() * canvas.height * 0.45 + 50
+          );
+        }
+
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.045;
+          p.alpha -= 0.015;
+
+          if (p.alpha <= 0) {
+            particles.splice(i, 1);
+            continue;
+          }
+          ctx.globalAlpha = p.alpha;
+          ctx.fillStyle = p.color;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+        fireworksLoopId = requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    function launchRoyalParticles() {
+      const container = document.getElementById("ambientBg");
+      const icons = ["✨", "💎", "👑", "🏎️", "🏍️", "💙"];
+      setInterval(() => {
+        const el = document.createElement("div");
+        el.className = "floating-particle";
+        el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.animationDuration = (Math.random() * 4 + 5) + "s";
+        container.appendChild(el);
+        setTimeout(() => el.remove(), 9000);
+      }, 750);
+    }
+  </script>
+</body>
+</html>
