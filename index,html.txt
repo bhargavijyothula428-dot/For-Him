@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Royal Birthday Edition | For My Favorite Rider & Co-Pilot</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Ambient Royal & Motor Background Layer -->
+  <div class="ambient-bg" id="ambientBg"></div>
+
+  <!-- SCREEN 1: ROYAL IGNITION PASSCODE LOCK -->
+  <section id="lock-screen" class="screen active">
+    <div class="royal-card lock-box">
+      <div class="emblem-row">
+        <span class="emblem-icon">🏎️</span>
+        <span class="crown-badge">👑 VIP ACCESS</span>
+        <span class="emblem-icon">🏍️</span>
+      </div>
+
+      <h1>START THE ENGINE</h1>
+      <p class="subtitle">Enter your 4-digit security key to unlock your birthday vault</p>
+
+      <div class="passcode-display" id="passcodeDisplay">_ _ _ _</div>
+      <p id="error-msg" class="error-text"></p>
+
+      <div class="keypad">
+        <button onclick="pressKey('1')">1</button>
+        <button onclick="pressKey('2')">2</button>
+        <button onclick="pressKey('3')">3</button>
+        <button onclick="pressKey('4')">4</button>
+        <button onclick="pressKey('5')">5</button>
+        <button onclick="pressKey('6')">6</button>
+        <button onclick="pressKey('7')">7</button>
+        <button onclick="pressKey('8')">8</button>
+        <button onclick="pressKey('9')">9</button>
+        <button class="action-btn" onclick="clearCode()">RESET</button>
+        <button onclick="pressKey('0')">0</button>
+        <button class="action-btn unlock-btn" onclick="checkPasscode()">IGNITE</button>
+      </div>
+
+      <p class="hint">Hint: Tomorrow's special date (DDMM) 🔑</p>
+    </div>
+  </section>
+
+  <!-- SCREEN 2: THREE ROYAL GIFT VAULTS -->
+  <section id="gifts-screen" class="screen">
+    <div class="header-banner">
+      <div class="top-tag">🏎️ • ROYAL EDITION • 🏍️</div>
+      <h1>Happy Birthday, My King 👑</h1>
+      <p>Every mile with you is my favorite adventure. Unlock each of your three birthday gifts below.</p>
+    </div>
+
+    <div class="gifts-container">
+      <!-- Gift 1: 10 Photos -->
+      <div class="gift-card" onclick="openModal('modal-photos')">
+        <div class="gift-badge">VAULT 01 • GALLERY</div>
+        <div class="gift-emoji">📸🏎️</div>
+        <h3>10 Miles of Memories</h3>
+        <p>Ten unforgettable snapshots from our journey together—every frame worth a thousand miles.</p>
+        <span class="open-pill">Open Photo Vault →</span>
+      </div>
+
+      <!-- Gift 2: Lengthy Royal Letter -->
+      <div class="gift-card featured-gift" onclick="openModal('modal-letter')">
+        <div class="gift-badge">VAULT 02 • PERSONAL LETTER</div>
+        <div class="gift-emoji">📜👑</div>
+        <h3>A Letter Written For You</h3>
+        <p>Every thought, wish, and reason why you mean the world to me, penned just for today.</p>
+        <span class="open-pill">Read The Letter →</span>
+      </div>
+
+      <!-- Gift 3: Interactive Car & Bike VIP Passes -->
+      <div class="gift-card" onclick="openModal('modal-vouchers')">
+        <div class="gift-badge">VAULT 03 • VIP GARAGE</div>
+        <div class="gift-emoji">🏍️🎟️</div>
+        <h3>Rider & Driver VIP Passes</h3>
+        <p>Exclusive birthday experiences, drives, and treats ready for you to claim whenever you want.</p>
+        <span class="open-pill">Claim VIP Passes →</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL 1: 10 PHOTO MEMORIES -->
+  <div id="modal-photos" class="modal">
+    <div class="modal-content wide-modal">
+      <button class="close-btn" onclick="closeModal('modal-photos')">&times;</button>
+      <div class="modal-header">
+        <span class="modal-tag">OUR JOURNEY IN FRAMES</span>
+        <h2>10 Unforgettable Moments Together 🏎️✨</h2>
+        <p class="modal-sub">No matter the road, having you beside me makes every destination worthwhile.</p>
+      </div>
+
+      <div class="photo-grid">
+        <!-- Put your 10 photos in the 'photos/' folder named 1.jpg to 10.jpg -->
+        <div class="luxury-frame"><img src="photos/1.jpg" alt="Memory 1"><div class="frame-caption"><span>01</span> Where the journey began ✨</div></div>
+        <div class="luxury-frame"><img src="photos/2.jpg" alt="Memory 2"><div class="frame-caption"><span>02</span> My favorite smile on any road 😊</div></div>
+        <div class="luxury-frame"><img src="photos/3.jpg" alt="Memory 3"><div class="frame-caption"><span>03</span> Pure happiness & good vibes 🌟</div></div>
+        <div class="luxury-frame"><img src="photos/4.jpg" alt="Memory 4"><div class="frame-caption"><span>04</span> Always my #1 co-pilot 🏎️</div></div>
+        <div class="luxury-frame"><img src="photos/5.jpg" alt="Memory 5"><div class="frame-caption"><span>05</span> A moment frozen in gold 👑</div></div>
+        <div class="luxury-frame"><img src="photos/6.jpg" alt="Memory 6"><div class="frame-caption"><span>06</span> Effortless laughs & endless talks 🌙</div></div>
+        <div class="luxury-frame"><img src="photos/7.jpg" alt="Memory 7"><div class="frame-caption"><span>07</span> Side by side through everything 💙</div></div>
+        <div class="luxury-frame"><img src="photos/8.jpg" alt="Memory 8"><div class="frame-caption"><span>08</span> My safest place in the world ⚓</div></div>
+        <div class="luxury-frame"><img src="photos/9.jpg" alt="Memory 9"><div class="frame-caption"><span>09</span> Looking at you like this forever 😍</div></div>
+        <div class="luxury-frame"><img src="photos/10.jpg" alt="Memory 10"><div class="frame-caption"><span>10</span> Here's to a lifetime of rides 🏍️🥂</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: LONG LENGTHY BIRTHDAY LETTER -->
+  <div id="modal-letter" class="modal">
+    <div class="modal-content royal-scroll">
+      <button class="close-btn" onclick="closeModal('modal-letter')">&times;</button>
+      <div class="letter-header">
+        <p class="letter-date">NOVEMBER 15, 2026 • SPECIAL BIRTHDAY EDITION</p>
+        <h2>To The Man Who Holds My Heart,</h2>
+      </div>
+
+      <!-- CUSTOMIZE HERE: Edit or add your personal memories and thoughts below -->
+      <div class="letter-body">
+        <p>Happy Birthday, my love! Today is a celebration of the most extraordinary person in my life—the man whose presence brings calm to my chaos, strength to my hardest days, and genuine joy to every ordinary moment. I wanted to build this royal little corner of the internet just for you so that whenever you want, you can open it and feel how deeply cherished you truly are.</p>
+
+        <p>People often say that life is a long highway full of unexpected turns, and if that’s true, then having you in the driver’s seat—or riding right alongside me—is the greatest blessing I could ever ask for. Whether we are cruising down the road talking about everything and nothing, sharing quiet glances, or laughing until our stomachs hurt, every single mile with you feels effortless and real.</p>
+
+        <p>There are so many things about you that I admire more than words can easily capture. I admire your drive, your ambition, the quiet resilience you carry when things get tough, and the genuine respect and warmth you show to the people you love. You have a rare kind of character—strong, grounded, and loyal—and watching you chase your goals makes me endlessly proud to call you mine.</p>
+
+        <p>Thank you for the thousand little things you do without ever asking for credit: the way you check in on me, the way you listen patiently, the way your eyes light up when you talk about the things you love—whether it's machines, engines, or your big plans for the future—and the way you make me feel completely safe just by holding my hand.</p>
+
+        <p>[Add your own personal paragraph here! Write about your favorite ride or date together, a specific memory from this past year, or an inside joke that always makes you both smile.]</p>
+
+        <p>As you step into this new year of your life, my biggest prayer and wish for you is boundless success, rock-solid health, peace of mind, and every dream you’ve been working hard toward finally landing right in your hands. May your roads always be clear, your engines always roar strong, and your heart always stay full. No matter where life takes us next, remember that you will always have my unwavering support, my loudest cheers, and all of my love.</p>
+
+        <p>Happy Birthday once again, my handsome king. Let’s make this year unforgettable.</p>
+
+        <p class="letter-sign">Forever your co-pilot & biggest fan,<br><span>Bhargavi 💙👑</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: INTERACTIVE CAR & BIKE VIP PASSES -->
+  <div id="modal-vouchers" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modal-vouchers')">&times;</button>
+      <div class="modal-header">
+        <span class="modal-tag">EXCLUSIVE BIRTHDAY PRIVILEGES</span>
+        <h2>Your Royal Garage & Date Passes 🏎️🏍️</h2>
+        <p class="modal-sub">Tap any pass to activate it—take a screenshot and redeem it with me anytime!</p>
+      </div>
+
+      <div class="voucher-list">
+        <div class="voucher" onclick="redeemVoucher(this)">
+          <div>
+            <h4>🏎️ Midnight Long Drive & Your Playlist</h4>
+            <p>Full control of the aux cord, open roads, and zero rush to be anywhere.</p>
+          </div>
+          <span class="redeem-status">Activate Pass</span>
+        </div>
+
+        <div class="voucher" onclick="redeemVoucher(this)">
+          <div>
+            <h4>🏍️ Scenic Bike Ride & Sunset Coffee Run</h4>
+            <p>Just the two of us, cool breeze, and your favorite hangout spot.</p>
+          </div>
+          <span class="redeem-status">Activate Pass</span>
+        </div>
+
+        <div class="voucher" onclick="redeemVoucher(this)">
+          <div>
+            <h4>🍽️ Royal Dinner Feast (Your Choice)</h4>
+            <p>You pick the restaurant, the dishes, and the dessert—my treat completely.</p>
+          </div>
+          <span class="redeem-status">Activate Pass</span>
+        </div>
+
+        <div class="voucher" onclick="redeemVoucher(this)">
+          <div>
+            <h4>👑 All-Day King Treatment & No-Stress Pass</h4>
+            <p>Valid on any tiring day: unlimited affection, zero complaints, and full pampering.</p>
+          </div>
+          <span class="redeem-status">Activate Pass</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // CUSTOMIZE HERE: Change '1511' to your desired 4-digit passcode
+    const CORRECT_PASSCODE = "1216";
+    let enteredCode = "";
+
+    function updateDisplay() {
+      let display = "";
+      for (let i = 0; i < 4; i++) {
+        display += enteredCode[i] ? "◆ " : "_ ";
+      }
+      document.getElementById("passcodeDisplay").textContent = display.trim();
+    }
+
+    function pressKey(num) {
+      if (enteredCode.length < 4) {
+        enteredCode += num;
+        updateDisplay();
+        document.getElementById("error-msg").textContent = "";
+      }
+    }
+
+    function clearCode() {
+      enteredCode = "";
+      updateDisplay();
+      document.getElementById("error-msg").textContent = "";
+    }
+
+    function checkPasscode() {
+      if (enteredCode === CORRECT_PASSCODE) {
+        document.getElementById("lock-screen").classList.remove("active");
+        document.getElementById("gifts-screen").classList.add("active");
+        launchRoyalParticles();
+      } else {
+        document.getElementById("error-msg").textContent = "Access Denied — Check your key code & try again 🔑";
+        enteredCode = "";
+        updateDisplay();
+      }
+    }
+
+    function openModal(id) {
+      document.getElementById(id).style.display = "flex";
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+
+    function redeemVoucher(el) {
+      el.classList.toggle("claimed");
+      const status = el.querySelector(".redeem-status");
+      status.textContent = el.classList.contains("claimed") ? "UNLOCKED ✅" : "Activate Pass";
+    }
+
+    // Subtle floating royal sparkles & motor emblems
+    function launchRoyalParticles() {
+      const container = document.getElementById("ambientBg");
+      const icons = ["✨", "💎", "👑", "🏎️", "🏍️", "💠"];
+      setInterval(() => {
+        const el = document.createElement("div");
+        el.className = "floating-particle";
+        el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.animationDuration = (Math.random() * 4 + 5) + "s";
+        container.appendChild(el);
+        setTimeout(() => el.remove(), 9000);
+      }, 750);
+    }
+  </script>
+</body>
+</html>
