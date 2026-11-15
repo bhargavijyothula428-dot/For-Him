@@ -7,21 +7,100 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
   <style>
-    .ambient-bg {
-      pointer-events: none !important;
-      z-index: 0 !important;
-    }
-    .screen {
-      position: relative;
-      z-index: 2;
-    }
-    .keypad button {
-      position: relative;
-      z-index: 5;
-      touch-action: manipulation;
-    }
+    .ambient-bg { pointer-events: none !important; z-index: 0 !important; }
+    .screen { position: relative; z-index: 2; }
+    .keypad button { position: relative; z-index: 5; touch-action: manipulation; }
 
-    /* Interactive Quiz Styling */
+    /* =======================================================
+       GIFT 01: STACKED POLAROID DECK (YOUTUBE SHORT STYLE)
+       ======================================================= */
+    .polaroid-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+    .polaroid-counter {
+      font-size: 0.82rem;
+      letter-spacing: 0.16em;
+      color: #2dd4bf;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+    .polaroid-card {
+      width: 100%;
+      max-width: 370px;
+      background: #fffdf7;
+      color: #1e293b;
+      padding: 14px 14px 20px;
+      border-radius: 16px;
+      border: 3px solid #e5c158;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 0 0 6px rgba(229, 193, 88, 0.15);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+    }
+    .polaroid-card.flip-out {
+      transform: translateX(35px) rotate(6deg) scale(0.95);
+      opacity: 0.35;
+    }
+    .polaroid-img-wrap {
+      width: 100%;
+      height: 320px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .polaroid-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .polaroid-tag {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: #0d9488;
+      text-transform: uppercase;
+    }
+    .polaroid-caption {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.22rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+    .polaroid-controls {
+      display: flex;
+      gap: 0.85rem;
+      margin-top: 1.15rem;
+    }
+    .polaroid-btn {
+      background: linear-gradient(135deg, #e5c158, #2dd4bf);
+      color: #04101c;
+      font-weight: 800;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 99px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: transform 0.2s ease;
+    }
+    .polaroid-btn.secondary {
+      background: rgba(15, 23, 42, 0.85);
+      color: #f5df96;
+      border: 1px solid rgba(229, 193, 88, 0.45);
+    }
+    .polaroid-btn:hover { transform: scale(1.05); }
+
+    /* =======================================================
+       GIFT 03: INTERACTIVE QUIZ STYLING
+       ======================================================= */
     .quiz-box {
       background: rgba(17, 42, 92, 0.55);
       border: 1px solid rgba(45, 212, 191, 0.35);
@@ -29,25 +108,9 @@
       padding: 1.5rem;
       margin-top: 0.5rem;
     }
-    .quiz-progress {
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      color: #2dd4bf;
-      font-weight: 600;
-      margin-bottom: 0.6rem;
-    }
-    .quiz-question {
-      font-family: 'Cinzel', serif;
-      font-size: 1.25rem;
-      color: #f5df96;
-      margin-bottom: 1.2rem;
-      line-height: 1.5;
-    }
-    .quiz-options {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
+    .quiz-progress { font-size: 0.78rem; letter-spacing: 0.14em; color: #2dd4bf; font-weight: 600; margin-bottom: 0.6rem; }
+    .quiz-question { font-family: 'Cinzel', serif; font-size: 1.2rem; color: #f5df96; margin-bottom: 1.1rem; line-height: 1.5; }
+    .quiz-options { display: flex; flex-direction: column; gap: 0.75rem; }
     .quiz-option-btn {
       background: rgba(5, 11, 26, 0.75);
       border: 1px solid rgba(229, 193, 88, 0.35);
@@ -59,11 +122,7 @@
       cursor: pointer;
       transition: all 0.2s ease;
     }
-    .quiz-option-btn:hover {
-      border-color: #2dd4bf;
-      background: rgba(20, 184, 166, 0.18);
-      transform: translateX(4px);
-    }
+    .quiz-option-btn:hover { border-color: #2dd4bf; background: rgba(20, 184, 166, 0.18); transform: translateX(4px); }
     .quiz-reaction-wrap {
       margin-top: 1.1rem;
       padding: 1rem 1.1rem;
@@ -90,7 +149,136 @@
     }
 
     /* =======================================================
-       MILK & MOCHA STYLE GIF / CUTE BEAR CARDS
+       GIFT 04: TAP-TO-FLIP LOVE CARDS
+       ======================================================= */
+    .flip-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .flip-card {
+      height: 155px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      transform-style: preserve-3d;
+    }
+    .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+    .flip-front, .flip-back {
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      backface-visibility: hidden;
+    }
+    .flip-front {
+      background: linear-gradient(145deg, rgba(17, 42, 92, 0.9), rgba(8, 20, 48, 0.95));
+      border: 1.5px solid rgba(229, 193, 88, 0.55);
+      color: #f5df96;
+    }
+    .flip-back {
+      background: linear-gradient(145deg, rgba(13, 148, 136, 0.32), rgba(15, 23, 42, 0.96));
+      border: 1.5px solid #2dd4bf;
+      color: #f8fafc;
+      transform: rotateY(180deg);
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
+
+    /* =======================================================
+       GIFT 05: INTERACTIVE TAP-CANDLE BIRTHDAY CAKE
+       ======================================================= */
+    .cake-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.2rem 0.5rem;
+    }
+    .candles-row {
+      display: flex;
+      gap: 22px;
+      margin-bottom: -6px;
+      z-index: 3;
+    }
+    .candle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+    .flame {
+      width: 16px;
+      height: 24px;
+      background: radial-gradient(circle at 50% 70%, #fff7ed, #fbbf24 55%, #f97316);
+      border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
+      box-shadow: 0 0 14px #fbbf24, 0 0 26px #f97316;
+      animation: flicker 0.45s ease-in-out infinite alternate;
+      transition: all 0.3s ease;
+    }
+    .flame.out {
+      opacity: 0;
+      transform: scale(0.1) translateY(-12px);
+      box-shadow: none;
+    }
+    @keyframes flicker {
+      from { transform: scale(0.94) rotate(-3deg); }
+      to { transform: scale(1.06) rotate(3deg); }
+    }
+    .candle-stick {
+      width: 10px;
+      height: 38px;
+      background: repeating-linear-gradient(45deg, #2dd4bf, #2dd4bf 5px, #f8fafc 5px, #f8fafc 10px);
+      border-radius: 4px;
+      margin-top: 2px;
+    }
+    .cake-tier-top {
+      width: 190px;
+      height: 54px;
+      background: linear-gradient(180deg, #ff8fab, #fb6f92);
+      border-radius: 16px 16px 6px 6px;
+      border: 2px solid #f5df96;
+      position: relative;
+    }
+    .cake-tier-bottom {
+      width: 250px;
+      height: 68px;
+      background: linear-gradient(180deg, #1e3a8a, #0f172a);
+      border-radius: 14px 14px 20px 20px;
+      border: 2px solid #e5c158;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f5df96;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 0.92rem;
+      letter-spacing: 0.08em;
+    }
+    .wish-unlocked-msg {
+      margin-top: 1.2rem;
+      padding: 1rem 1.2rem;
+      border-radius: 16px;
+      background: rgba(20, 184, 166, 0.2);
+      border: 1.5px solid #2dd4bf;
+      color: #f8fafc;
+      display: none;
+      max-width: 440px;
+      line-height: 1.55;
+    }
+
+    /* =======================================================
+       MILK & MOCHA BEAR CARDS + GRAND FINALE (FIREWORKS ON TOP)
        ======================================================= */
     .cute-gif-box {
       width: 165px;
@@ -106,14 +294,7 @@
       overflow: hidden;
       position: relative;
     }
-    .cute-gif-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* 5 Bear Animations */
+    .cute-gif-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .mocha-body { transform-origin: 72px 128px; animation: mochaSquish 2.1s ease-in-out infinite; }
     .milk-kiss { transform-origin: 122px 128px; animation: milkLeanKiss 2.1s ease-in-out infinite; }
     .milk-tease { transform-origin: 122px 128px; animation: milkBounceTease 1.3s ease-in-out infinite; }
@@ -123,78 +304,48 @@
     .cake-bounce { transform-origin: 90px 128px; animation: cakeCelebrate 1.6s ease-in-out infinite; }
     .float-love { animation: lovePop 1.4s ease-in-out infinite; }
 
-    @keyframes mochaSquish {
-      0%, 100% { transform: rotate(0deg) scale(1, 1); }
-      45%, 70% { transform: rotate(-6deg) scale(1.04, 0.96); }
-    }
-    @keyframes milkLeanKiss {
-      0%, 100% { transform: translateX(12px) rotate(4deg); }
-      40%, 75% { transform: translateX(-10px) rotate(-10deg); }
-    }
-    @keyframes milkBounceTease {
-      0%, 100% { transform: translate(4px, 0px) rotate(-3deg); }
-      30% { transform: translate(-8px, -10px) rotate(-12deg); }
-      60% { transform: translate(-11px, 2px) rotate(-8deg) scale(1.05, 0.94); }
-    }
-    @keyframes cuddleRock {
-      0%, 100% { transform: rotate(-4deg); }
-      50% { transform: rotate(5deg); }
-    }
-    @keyframes playJump {
-      0%, 100% { transform: translateY(0) scale(1, 1); }
-      45% { transform: translateY(-16px) scale(0.96, 1.05); }
-    }
-    @keyframes cakeCelebrate {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05) translateY(-4px); }
-    }
-    @keyframes lovePop {
-      0%, 100% { transform: translateY(0) scale(0.85); opacity: 0.75; }
-      50% { transform: translateY(-7px) scale(1.22); opacity: 1; }
-    }
+    @keyframes mochaSquish { 0%, 100% { transform: rotate(0deg) scale(1, 1); } 45%, 70% { transform: rotate(-6deg) scale(1.04, 0.96); } }
+    @keyframes milkLeanKiss { 0%, 100% { transform: translateX(12px) rotate(4deg); } 40%, 75% { transform: translateX(-10px) rotate(-10deg); } }
+    @keyframes milkBounceTease { 0%, 100% { transform: translate(4px, 0px) rotate(-3deg); } 30% { transform: translate(-8px, -10px) rotate(-12deg); } 60% { transform: translate(-11px, 2px) rotate(-8deg) scale(1.05, 0.94); } }
+    @keyframes cuddleRock { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(5deg); } }
+    @keyframes playJump { 0%, 100% { transform: translateY(0) scale(1, 1); } 45% { transform: translateY(-16px) scale(0.96, 1.05); } }
+    @keyframes cakeCelebrate { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05) translateY(-4px); } }
+    @keyframes lovePop { 0%, 100% { transform: translateY(0) scale(0.85); opacity: 0.75; } 50% { transform: translateY(-7px) scale(1.22); opacity: 1; } }
 
-    /* =======================================================
-       GIFT 04: GRAND BIRTHDAY FINALE (EXTRAVAGANZA!)
-       ======================================================= */
     #modal-finale {
       background: radial-gradient(circle at center, rgba(13, 35, 82, 0.96), rgba(3, 7, 18, 0.98));
       overflow-y: auto;
     }
+    /* Fireworks canvas placed IN FRONT (z-index: 1020) with pointer-events: none */
     #fireworksCanvas {
       position: fixed;
       inset: 0;
       width: 100vw;
       height: 100vh;
       pointer-events: none;
-      z-index: 1001;
+      z-index: 1020;
     }
     #finaleBurstLayer {
       position: fixed;
       inset: 0;
       pointer-events: none;
       overflow: hidden;
-      z-index: 1002;
+      z-index: 1018;
     }
     .finale-container {
       position: relative;
-      z-index: 1005;
+      z-index: 1010;
       max-width: 960px;
       width: 94%;
       margin: 2rem auto;
       padding: 2rem 1.5rem 2.4rem;
       border-radius: 28px;
-      background: linear-gradient(160deg, rgba(14, 34, 77, 0.9), rgba(6, 16, 38, 0.94));
+      background: linear-gradient(160deg, rgba(14, 34, 77, 0.88), rgba(6, 16, 38, 0.92));
       border: 2px solid #e5c158;
-      box-shadow: 0 0 50px rgba(45, 212, 191, 0.3), 0 0 90px rgba(229, 193, 88, 0.22);
+      box-shadow: 0 0 50px rgba(45, 212, 191, 0.35), 0 0 90px rgba(229, 193, 88, 0.25);
       text-align: center;
     }
-    .finale-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      margin: 1rem 0;
-    }
+    .finale-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin: 1rem 0; }
     .mini-bear-card {
       width: 148px;
       background: #fef3c7;
@@ -205,24 +356,15 @@
       overflow: hidden;
       transition: transform 0.25s ease;
     }
-    .mini-bear-card:hover {
-      transform: translateY(-5px) scale(1.04);
-    }
-    .mini-bear-card .bear-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: #5c3310;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-top: -2px;
-    }
+    .mini-bear-card:hover { transform: translateY(-5px) scale(1.04); }
+    .mini-bear-card .bear-label { font-size: 0.72rem; font-weight: 700; color: #5c3310; letter-spacing: 0.05em; text-transform: uppercase; margin-top: -2px; }
     .grand-wish-center {
       margin: 1.4rem auto;
       padding: 1.6rem 1.2rem;
       border-radius: 22px;
-      background: linear-gradient(135deg, rgba(20, 184, 166, 0.18), rgba(229, 193, 88, 0.18));
-      border: 1.5px solid rgba(245, 223, 150, 0.65);
-      box-shadow: 0 0 35px rgba(45, 212, 191, 0.25);
+      background: linear-gradient(135deg, rgba(20, 184, 166, 0.2), rgba(229, 193, 88, 0.2));
+      border: 1.5px solid rgba(245, 223, 150, 0.7);
+      box-shadow: 0 0 35px rgba(45, 212, 191, 0.3);
     }
     .grand-wish-title {
       font-family: 'Cinzel', serif;
@@ -235,21 +377,9 @@
       animation: shimmerGold 3s linear infinite;
       margin: 0.4rem 0;
     }
-    @keyframes shimmerGold {
-      to { background-position: 200% center; }
-    }
-    .lily-banner {
-      font-size: 1.45rem;
-      letter-spacing: 0.35rem;
-      margin: 0.4rem 0;
-    }
-    .finale-subwish {
-      color: #f1f5f9;
-      font-size: 1.02rem;
-      max-width: 620px;
-      margin: 0.6rem auto 1.1rem;
-      line-height: 1.6;
-    }
+    @keyframes shimmerGold { to { background-position: 200% center; } }
+    .lily-banner { font-size: 1.45rem; letter-spacing: 0.35rem; margin: 0.4rem 0; }
+    .finale-subwish { color: #f1f5f9; font-size: 1.02rem; max-width: 620px; margin: 0.6rem auto 1.1rem; line-height: 1.6; }
     .mega-blast-btn {
       background: linear-gradient(135deg, #e5c158, #2dd4bf);
       color: #04101c;
@@ -259,18 +389,11 @@
       border-radius: 99px;
       font-size: 0.95rem;
       cursor: pointer;
-      box-shadow: 0 8px 24px rgba(45, 212, 191, 0.4);
+      box-shadow: 0 8px 24px rgba(45, 212, 191, 0.45);
       transition: transform 0.2s ease;
     }
-    .mega-blast-btn:hover {
-      transform: scale(1.06);
-    }
-    .pop-item {
-      position: fixed;
-      pointer-events: none;
-      animation: floatBurstUp 3.6s ease-out forwards;
-      z-index: 1003;
-    }
+    .mega-blast-btn:hover { transform: scale(1.06); }
+    .pop-item { position: fixed; pointer-events: none; animation: floatBurstUp 3.6s ease-out forwards; z-index: 1019; }
     @keyframes floatBurstUp {
       0% { transform: translateY(0) scale(0.4) rotate(0deg); opacity: 0; }
       20% { opacity: 1; transform: translateY(-30px) scale(1.15) rotate(12deg); }
@@ -315,11 +438,9 @@
       <p class="hint">Hint: Our special 4-digit code 🔑</p>
     </div>
   </section>
-
-  <!-- SCREEN 2: FOUR ROYAL GIFT VAULTS -->
+  <!-- SCREEN 2: SIX ROYAL GIFT VAULTS -->
   <section id="gifts-screen" class="screen">
     <div class="header-banner">
-      <!-- Cute Milk & Mocha Hugging Box on Unlock -->
       <div class="cute-gif-box">
         <img src="hug.gif" alt="Cute Bears Hugging" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
         <svg viewBox="0 0 180 145" width="165" height="138" style="display:none;">
@@ -350,20 +471,18 @@
 
       <div class="top-tag">🏎️ • ROYAL EDITION • 🏍️</div>
       <h1>Happy Birthday, My Love 👑</h1>
-      <p>Tap all four gift boxes below—save Gift 04 for the grand finale!</p>
+      <p>Six birthday surprises waiting for you—save Gift 06 for the grand finale!</p>
     </div>
 
     <div class="gifts-container">
-      <!-- Gift 1: 7 Photos -->
-      <div class="gift-card" onclick="openModal('modal-photos')">
-        <div class="gift-badge">GIFT 01 • OUR MEMORIES</div>
-        <div class="gift-emoji">📸🏎️</div>
+      <div class="gift-card" onclick="openPolaroidModal()">
+        <div class="gift-badge">GIFT 01 • MEMORY DECK</div>
+        <div class="gift-emoji">📸✨</div>
         <h3>7 Favorite Moments</h3>
-        <p>Seven snapshots of us that always bring a smile to my face.</p>
-        <span class="open-pill">Open Photo Gallery →</span>
+        <p>Flip through our 7 favorite snapshots and the stories behind them.</p>
+        <span class="open-pill">Flip Memories →</span>
       </div>
 
-      <!-- Gift 2: Your Exact Letter -->
       <div class="gift-card" onclick="openModal('modal-letter')">
         <div class="gift-badge">GIFT 02 • FOR YOU</div>
         <div class="gift-emoji">💌👑</div>
@@ -372,7 +491,6 @@
         <span class="open-pill">Read My Words →</span>
       </div>
 
-      <!-- Gift 3: Interactive Quiz -->
       <div class="gift-card" onclick="openQuizModal()">
         <div class="gift-badge">GIFT 03 • FUN CHALLENGE</div>
         <div class="gift-emoji">🏍️🎯</div>
@@ -381,9 +499,24 @@
         <span class="open-pill">Start The Quiz →</span>
       </div>
 
-      <!-- Gift 4: Grand Birthday Fireworks & Lily Finale -->
+      <div class="gift-card" onclick="openModal('modal-flip')">
+        <div class="gift-badge">GIFT 04 • TAP TO REVEAL</div>
+        <div class="gift-emoji">🃏💙</div>
+        <h3>6 Things I Adore</h3>
+        <p>Tap each mystery card to flip and see what makes you so special to me.</p>
+        <span class="open-pill">Flip The Cards →</span>
+      </div>
+
+      <div class="gift-card" onclick="openCakeModal()">
+        <div class="gift-badge">GIFT 05 • MAKE A WISH</div>
+        <div class="gift-emoji">🎂🕯️</div>
+        <h3>Blow Out The Candles</h3>
+        <p>Close your eyes, make a wish, and tap every candle flame to blow it out!</p>
+        <span class="open-pill">Light The Cake →</span>
+      </div>
+
       <div class="gift-card featured-gift" onclick="openFinaleModal()">
-        <div class="gift-badge">GIFT 04 • GRAND FINALE</div>
+        <div class="gift-badge">GIFT 06 • GRAND FINALE</div>
         <div class="gift-emoji">🎆🌸💖</div>
         <h3>The Big Birthday Wish</h3>
         <p>Fireworks, lilies, hearts & 5 cute Milk & Mocha surprises just for you!</p>
@@ -392,24 +525,28 @@
     </div>
   </section>
 
-  <!-- MODAL 1: 7 PHOTO MEMORIES -->
+  <!-- MODAL 1: STACKED POLAROID DECK (7 CUSTOM PHOTO STORIES) -->
   <div id="modal-photos" class="modal">
-    <div class="modal-content wide-modal">
+    <div class="modal-content">
       <button type="button" class="close-btn" onclick="closeModal('modal-photos')">&times;</button>
       <div class="modal-header">
-        <span class="modal-tag">OUR JOURNEY IN FRAMES</span>
-        <h2>7 Unforgettable Moments Together 🏎️✨</h2>
-        <p class="modal-sub">Every picture with you is my favorite memory.</p>
+        <span class="modal-tag">OUR POLAROID STORYBOOK</span>
+        <h2>Moments I Never Want To Forget ✨</h2>
       </div>
 
-      <div class="photo-grid">
-        <div class="luxury-frame"><img src="1.jpg.jpeg" alt="Memory 1"><div class="frame-caption"><span>01</span> My favorite person ✨</div></div>
-        <div class="luxury-frame"><img src="2.jpg.jpeg" alt="Memory 2"><div class="frame-caption"><span>02</span> Always better together 😊</div></div>
-        <div class="luxury-frame"><img src="3.jpg.jpeg" alt="Memory 3"><div class="frame-caption"><span>03</span> Best vibes only 🌟</div></div>
-        <div class="luxury-frame"><img src="4.jpg.jpeg" alt="Memory 4"><div class="frame-caption"><span>04</span> My #1 co-pilot 🏎️</div></div>
-        <div class="luxury-frame"><img src="5.jpg.jpeg" alt="Memory 5"><div class="frame-caption"><span>05</span> A moment worth keeping 👑</div></div>
-        <div class="luxury-frame"><img src="6.jpg.jpeg" alt="Memory 6"><div class="frame-caption"><span>06</span> Endless laughs with you 💙</div></div>
-        <div class="luxury-frame"><img src="7.jpg.jpeg" alt="Memory 7"><div class="frame-caption"><span>07</span> Here's to many more rides 🏍️🥂</div></div>
+      <div class="polaroid-stage">
+        <div class="polaroid-counter" id="polaroidCounter">MEMORY 1 OF 7</div>
+        <div class="polaroid-card" id="polaroidCard">
+          <div class="polaroid-img-wrap">
+            <img id="polaroidImg" src="1.jpg.jpeg" alt="Our Memory">
+          </div>
+          <div class="polaroid-tag" id="polaroidTag">01 • TEA TIME VIBES</div>
+          <div class="polaroid-caption" id="polaroidCaption"></div>
+        </div>
+        <div class="polaroid-controls">
+          <button type="button" class="polaroid-btn secondary" onclick="prevPolaroid()">← Previous</button>
+          <button type="button" class="polaroid-btn" onclick="nextPolaroid()">Next Memory →</button>
+        </div>
       </div>
     </div>
   </div>
@@ -483,12 +620,86 @@
           <div id="quizReaction"></div>
         </div>
 
-       <button type="button" class="quiz-next-btn" id="quizNextBtn" onclick="nextQuestion()">Next Question →</button>
+        <button type="button" class="quiz-next-btn" id="quizNextBtn" onclick="nextQuestion()">Next Question →</button>
       </div>
     </div>
   </div>
 
-  <!-- MODAL 4: GRAND BIRTHDAY FINALE -->
+  <!-- MODAL 4: TAP-TO-FLIP CARDS (THINGS I LOVE ABOUT YOU) -->
+  <div id="modal-flip" class="modal">
+    <div class="modal-content wide-modal">
+      <button type="button" class="close-btn" onclick="closeModal('modal-flip')">&times;</button>
+      <div class="modal-header">
+        <span class="modal-tag">TAP EACH CARD TO FLIP</span>
+        <h2>6 Reasons You're My Favorite Person 💙</h2>
+      </div>
+      <div class="flip-grid">
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front"><span style="font-size:1.8rem;">🏍️</span><strong>Reason #01</strong><small>Tap to reveal</small></div>
+            <div class="flip-back">Showing up out of nowhere just to see me for a few minutes—even when I'm out with friends!</div>
+          </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front"><span style="font-size:1.8rem;">🙏✨</span><strong>Reason #02</strong><small>Tap to reveal</small></div>
+            <div class="flip-back">Picking me up from college in your devotional attire and making sure I reach home safely.</div>
+          </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front"><span style="font-size:1.8rem;">👔🎉</span><strong>Reason #03</strong><small>Tap to reveal</small></div>
+            <div class="flip-back">Celebrating my biggest wins with me—like my blazer interview day when I cracked the job!</div>
+          </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front"><span style="font-size:1.8rem;">💪😁</span><strong>Reason #04</strong><small>Tap to reveal</small></div>
+            <div class="flip-back">How hard you work on yourself (and yes, showing off those muscles whenever you get a chance!).</div>
+          </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front"><span style="font-size:1.8rem;">🍵🎀</span><strong>Reason #05</strong><small>Tap to reveal</small></div>
+            <div class="flip-back">Even simple tea dates with you turn into my favorite memories (spooky ribbons included!).</div>
+          </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front"><span style="font-size:1.8rem;">💓👑</span><strong>Reason #06</strong><small>Tap to reveal</small></div>
+            <div class="flip-back">No matter how crazy or moody I act, you're still my safe place—and I love you without any reason!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 5: INTERACTIVE TAP-CANDLE BIRTHDAY CAKE -->
+  <div id="modal-cake" class="modal">
+    <div class="modal-content">
+      <button type="button" class="close-btn" onclick="closeModal('modal-cake')">&times;</button>
+      <div class="modal-header">
+        <span class="modal-tag">INTERACTIVE WISH</span>
+        <h2>Make A Birthday Wish 🎂✨</h2>
+        <p class="modal-sub" id="cakeInstruction">Tap all 5 glowing candle flames to blow them out!</p>
+      </div>
+      <div class="cake-stage">
+        <div class="candles-row" id="candlesRow">
+          <div class="candle" onclick="blowCandle(this)"><div class="flame"></div><div class="candle-stick"></div></div>
+          <div class="candle" onclick="blowCandle(this)"><div class="flame"></div><div class="candle-stick"></div></div>
+          <div class="candle" onclick="blowCandle(this)"><div class="flame"></div><div class="candle-stick"></div></div>
+          <div class="candle" onclick="blowCandle(this)"><div class="flame"></div><div class="candle-stick"></div></div>
+          <div class="candle" onclick="blowCandle(this)"><div class="flame"></div><div class="candle-stick"></div></div>
+        </div>
+        <div class="cake-tier-top"></div>
+        <div class="cake-tier-bottom">HAPPY BIRTHDAY KING 👑</div>
+        <div class="wish-unlocked-msg" id="wishUnlockedMsg">
+          🎉 <strong>Wish Locked In!</strong> May every single dream you wished for come true this year—and don't forget to open <strong>Gift 06</strong> for your grand finale! 💙😚
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- MODAL 6: GRAND BIRTHDAY FINALE (FIREWORKS IN FRONT + LILIES + 5 MILK & MOCHA ANIMATIONS) -->
   <div id="modal-finale" class="modal">
     <canvas id="fireworksCanvas"></canvas>
     <div id="finaleBurstLayer"></div>
@@ -631,18 +842,16 @@
       </div>
     </div>
   </div>
+
   <script>
     const CORRECT_PASSCODE = "1216";
     let enteredCode = "";
 
     function updateDisplay() {
       let display = "";
-      for (let i = 0; i < 4; i++) {
-        display += enteredCode[i] ? "◆ " : "_ ";
-      }
+      for (let i = 0; i < 4; i++) display += enteredCode[i] ? "◆ " : "_ ";
       document.getElementById("passcodeDisplay").textContent = display.trim();
     }
-
     function pressKey(num) {
       if (enteredCode.length < 4) {
         enteredCode += String(num);
@@ -650,13 +859,7 @@
         document.getElementById("error-msg").textContent = "";
       }
     }
-
-    function clearCode() {
-      enteredCode = "";
-      updateDisplay();
-      document.getElementById("error-msg").textContent = "";
-    }
-
+    function clearCode() { enteredCode = ""; updateDisplay(); document.getElementById("error-msg").textContent = ""; }
     function checkPasscode() {
       if (enteredCode === CORRECT_PASSCODE) {
         document.getElementById("lock-screen").classList.remove("active");
@@ -668,7 +871,6 @@
         updateDisplay();
       }
     }
-
     document.addEventListener("keydown", function (e) {
       if (!document.getElementById("lock-screen").classList.contains("active")) return;
       if (e.key >= "0" && e.key <= "9") pressKey(e.key);
@@ -679,13 +881,88 @@
     function openModal(id) { document.getElementById(id).style.display = "flex"; }
     function closeModal(id) { document.getElementById(id).style.display = "none"; }
 
+    /* =======================================================
+       GIFT 01: CUSTOM 7 POLAROID MEMORIES
+       ======================================================= */
+    const polaroidMemories = [
+      {
+        src: "1.jpg.jpeg",
+        tag: "01 • TEA POINT & SPOOKY RIBBONS 🎀",
+        caption: "Just us sitting at our tea spot—and you rocking those little ribbons with your cutest spooky look!"
+      },
+      {
+        src: "2.jpg.jpeg",
+        tag: "02 • DEVOTIONAL VIBES & COLLEGE PICKUP 🙏🏍️",
+        caption: "Looking so handsome in your devotional attire when you came to pick me up from college and drop me home."
+      },
+      {
+        src: "3.jpg.jpeg",
+        tag: "03 • SIDE-BY-SIDE RESTAURANT SELFIE 🍽️📸",
+        caption: "Sitting side by side at the restaurant—good food, endless laughs, and my favorite company."
+      },
+      {
+        src: "4.jpg.jpeg",
+        tag: "04 • THE SWEETEST SURPRISE DROP-IN ✨",
+        caption: "I was out with my friends and you showed up out of nowhere just to see me—my heart melted right there!"
+      },
+      {
+        src: "5.jpg.jpeg",
+        tag: "05 • BLAZER DAY & CRACKING THE JOB 👔🎉",
+        caption: "Right after my interview in my blazer when I cracked the job—celebrating one of my happiest wins with you!"
+      },
+      {
+        src: "6.jpg.jpeg",
+        tag: "06 • UNEXPECTED RUN-IN WITH FRIENDS 💫",
+        caption: "Another totally unplanned moment when I was out with my friends and ran into you—instant smile!"
+      },
+      {
+        src: "7.jpg.jpeg",
+        tag: "07 • BONUS FLEX FOR MY FAVORITE GUY 💪😎",
+        caption: "Since you didn't send me extra pics, I'm proudly featuring your muscle flex right here—looking strong, king!"
+      }
+    ];
+
+    let currentSlide = 0;
+
+    function openPolaroidModal() {
+      currentSlide = 0;
+      updatePolaroid();
+      openModal("modal-photos");
+    }
+
+    function updatePolaroid() {
+      const card = document.getElementById("polaroidCard");
+      const item = polaroidMemories[currentSlide];
+      card.classList.add("flip-out");
+      setTimeout(() => {
+        document.getElementById("polaroidCounter").textContent = `MEMORY ${currentSlide + 1} OF ${polaroidMemories.length}`;
+        document.getElementById("polaroidImg").src = item.src;
+        document.getElementById("polaroidTag").textContent = item.tag;
+        document.getElementById("polaroidCaption").textContent = item.caption;
+        card.classList.remove("flip-out");
+      }, 180);
+    }
+
+    function nextPolaroid() {
+      currentSlide = (currentSlide + 1) % polaroidMemories.length;
+      updatePolaroid();
+    }
+
+    function prevPolaroid() {
+      currentSlide = (currentSlide - 1 + polaroidMemories.length) % polaroidMemories.length;
+      updatePolaroid();
+    }
+
+    /* =======================================================
+       GIFT 03: QUIZ DATA & LOGIC
+       ======================================================= */
     const quizData = [
       {
         q: "1. What is the #1 thing about you that makes me fall for you all over again?",
         options: [
           "Your smile and the way you look at me",
           "How calm and strong you stay in every situation",
-          "The way you care for me in little ways without even showing off"
+          "Showing up unexpectedly just to see me for a few minutes"
         ],
         reaction: "Honestly, it's all of these—you don't even realize how special you are to me! 💙"
       },
@@ -694,16 +971,16 @@
         options: [
           "Full hero mode ON 🏍️🏎️",
           "Instant peace and focus on the road",
-          "Checking if I'm comfortable first before starting"
+          "Picking me up from college & making sure I reach home safely"
         ],
         reaction: "Best driver/rider ever—and I feel safest whenever I'm riding with you! 👑"
       },
       {
         q: "3. Which version of you is my absolute favorite?",
         options: [
-          "Serious & focused on your goals",
-          "Playful, teasing me, and cracking jokes",
-          "Soft & caring when it's just the two of us"
+          "Devotional & serene",
+          "Playful with spooky ribbons at our tea spot",
+          "Showing off those muscles in your gym/body pics 💪"
         ],
         reaction: "Every side of you is my favorite, especially when you're just being yourself with me. ❤️"
       },
@@ -720,7 +997,7 @@
         q: "5. What is your #1 responsibility as my boyfriend?",
         options: [
           "Pampering me when I'm overthinking",
-          "Giving me unlimited rides and food treats",
+          "Giving me unlimited tea dates and food treats",
           "Keeping me happy and spoiling me with your time & attention 👑"
         ],
         reaction: "All three are locked in! No excuses, no escapes—you're stuck with me forever! 😚💙"
@@ -737,13 +1014,7 @@
     ];
 
     let currentQ = 0;
-
-    function openQuizModal() {
-      currentQ = 0;
-      renderQuestion();
-      openModal("modal-quiz");
-    }
-
+    function openQuizModal() { currentQ = 0; renderQuestion(); openModal("modal-quiz"); }
     function renderQuestion() {
       const item = quizData[currentQ];
       document.getElementById("quizProgress").textContent = `QUESTION ${currentQ + 1} OF ${quizData.length}`;
@@ -761,7 +1032,6 @@
       document.getElementById("quizReactionWrap").style.display = "none";
       document.getElementById("quizNextBtn").style.display = "none";
     }
-
     function selectAnswer(reactionText) {
       document.getElementById("quizReaction").textContent = reactionText;
       document.getElementById("quizReactionWrap").style.display = "block";
@@ -769,12 +1039,34 @@
       nextBtn.textContent = currentQ < quizData.length - 1 ? "Next Question →" : "Play Again ↻";
       nextBtn.style.display = "inline-block";
     }
+    function nextQuestion() { currentQ = currentQ < quizData.length - 1 ? currentQ + 1 : 0; renderQuestion(); }
 
-    function nextQuestion() {
-      currentQ = currentQ < quizData.length - 1 ? currentQ + 1 : 0;
-      renderQuestion();
+    /* =======================================================
+       GIFT 05: INTERACTIVE CANDLE CAKE LOGIC
+       ======================================================= */
+    function openCakeModal() {
+      document.querySelectorAll("#candlesRow .flame").forEach(f => f.classList.remove("out"));
+      document.getElementById("wishUnlockedMsg").style.display = "none";
+      document.getElementById("cakeInstruction").textContent = "Tap all 5 glowing candle flames to blow them out!";
+      openModal("modal-cake");
     }
 
+    function blowCandle(candleEl) {
+      const flame = candleEl.querySelector(".flame");
+      if (flame.classList.contains("out")) return;
+      flame.classList.add("out");
+      const remaining = document.querySelectorAll("#candlesRow .flame:not(.out)").length;
+      if (remaining === 0) {
+        document.getElementById("cakeInstruction").textContent = "All candles blown out! 🌬️✨";
+        document.getElementById("wishUnlockedMsg").style.display = "block";
+      } else {
+        document.getElementById("cakeInstruction").textContent = `${remaining} candle${remaining > 1 ? "s" : ""} left—keep tapping!`;
+      }
+    }
+
+    /* =======================================================
+       GIFT 06: FIREWORKS IN FRONT + LILIES & HEARTS ENGINE
+       ======================================================= */
     let finaleActive = false;
     let fireworksLoopId = null;
     let petalTimerId = null;
@@ -785,7 +1077,7 @@
       finaleActive = true;
       startFireworksEngine();
       triggerMegaCelebration();
-      petalTimerId = setInterval(() => spawnLiliesAndHearts(8), 700);
+      petalTimerId = setInterval(() => spawnLiliesAndHearts(10), 650);
     }
 
     function closeFinaleModal() {
@@ -813,31 +1105,30 @@
     }
 
     function triggerMegaCelebration() {
-      spawnLiliesAndHearts(28);
-      for (let b = 0; b < 6; b++) {
+      spawnLiliesAndHearts(32);
+      for (let b = 0; b < 8; b++) {
         setTimeout(() => {
           createFireworkBurst(
             Math.random() * window.innerWidth * 0.8 + window.innerWidth * 0.1,
-            Math.random() * window.innerHeight * 0.45 + 60
+            Math.random() * window.innerHeight * 0.65 + 40
           );
-        }, b * 240);
+        }, b * 210);
       }
     }
 
     function createFireworkBurst(x, y) {
       const colors = ["#2dd4bf", "#f5df96", "#ff8fab", "#38bdf8", "#fb7185", "#fde047"];
       const color = colors[Math.floor(Math.random() * colors.length)];
-      for (let i = 0; i < 48; i++) {
-        const angle = (Math.PI * 2 * i) / 48;
-        const speed = Math.random() * 4.5 + 1.8;
+      for (let i = 0; i < 55; i++) {
+        const angle = (Math.PI * 2 * i) / 55;
+        const speed = Math.random() * 5.2 + 2.0;
         particles.push({
-          x,
-          y,
+          x, y,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
           alpha: 1,
           color,
-          size: Math.random() * 2.6 + 1.5
+          size: Math.random() * 3.0 + 1.8
         });
       }
     }
@@ -854,10 +1145,10 @@
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         tick++;
-        if (tick % 32 === 0) {
+        if (tick % 24 === 0) {
           createFireworkBurst(
             Math.random() * canvas.width * 0.8 + canvas.width * 0.1,
-            Math.random() * canvas.height * 0.45 + 50
+            Math.random() * canvas.height * 0.65 + 40
           );
         }
 
@@ -866,12 +1157,9 @@
           p.x += p.vx;
           p.y += p.vy;
           p.vy += 0.045;
-          p.alpha -= 0.015;
+          p.alpha -= 0.014;
 
-          if (p.alpha <= 0) {
-            particles.splice(i, 1);
-            continue;
-          }
+          if (p.alpha <= 0) { particles.splice(i, 1); continue; }
           ctx.globalAlpha = p.alpha;
           ctx.fillStyle = p.color;
           ctx.beginPath();
@@ -900,3 +1188,4 @@
   </script>
 </body>
 </html>
+                     
